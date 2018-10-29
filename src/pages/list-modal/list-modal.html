@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-row>
+      <!-- <ion-col col-3 no-padding>
+        <button color="light" clear (click)="goback()" ion-button icon-only>
+          <ion-icon name="md-arrow-back"></ion-icon>
+        </button>
+      </ion-col> -->
+      <ion-col col-9>
+        <ion-title> {{title}}</ion-title>
+      </ion-col>
+      <ion-col col-3>
+        <ion-buttons end>
+          <button ion-button color="light" (click)="done()" small clear>{{'Ok'|translate}}</button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list *ngFor="let item of listValues" >
+    <ion-item *ngIf="globalProvider.selectedLanguage == 'en'" >
+      <ion-label >{{item.nameEn}}</ion-label>
+      <ion-checkbox class="items" [checked]="item.checked" color="dark" (ionChange)="updatePropertyTypes(item.nameEn, item.id)"></ion-checkbox>
+    </ion-item>
+    <hr/>
+    <ion-item *ngIf="globalProvider.selectedLanguage == 'ar'">
+      <ion-label>{{item.nameAr}}</ion-label>
+      <ion-checkbox color="dark" (ionChange)="updatePropertyTypes(item.nameA, item.id)"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

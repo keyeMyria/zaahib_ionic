@@ -1,0 +1,33 @@
+
+
+
+  <div class="template-header__grid">
+    <div class="search template-header__search">
+      <form class="form search__form">
+
+        <ion-icon class="searchIcon" name="search"></ion-icon>
+
+        <input class="search__input txtSearch" type="text" name="s" [(ngModel)]="searchProvider.modalData.Keywords" placeholder="{{'Search'|translate}}">
+
+
+      </form>
+      <!-- Begin suggestions -->
+      <div style="display: none;" class="search-suggestions">
+        <div class="search-suggestions__overlay"></div>
+        <div class="search-suggestions__grid">
+          <header class="search-suggestions__header">Property type</header>
+          <div class="search-suggestions__content">
+            <p class="search-suggestions__value">Villa</p>
+            <p class="search-suggestions__value">Holliday Villa</p>
+          </div>
+
+        </div>
+      </div>
+      <!-- End suggestions -->
+    </div>
+    <button type="button" class="btnSearch" menuToggle>
+
+      <i class="fa fa-bars fa-2x homebars"></i>
+      <p class="notifications menu-btn__notifications">15</p>
+    </button>
+  </div>

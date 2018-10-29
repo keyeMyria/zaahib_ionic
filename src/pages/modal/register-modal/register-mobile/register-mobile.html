@@ -1,0 +1,28 @@
+<ion-content padding>
+
+  <ion-buttons end>
+    <button ion-button round clear (click)="dismiss()">
+      <ion-icon color="primary" name="close"></ion-icon>
+    </button>
+  </ion-buttons>
+
+  <ion-label color="primary" class="center">
+    <h1>{{'Register'|translate}}</h1>
+  </ion-label>
+
+  <ion-list no-lines>
+    <ion-item>
+      <ion-icon class="country-icon" item-start>
+        <img src="assets/imgs/flags/flag-{{this.globalProvider.country}}.png" />
+      </ion-icon>
+      <ion-label>+{{this.countryCodeData[this.globalProvider.country].prefix}}</ion-label>
+      <ion-input type="text" [(ngModel)]="MobileNumber" placeholder="{{'Mobile Number'| translate}}"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div class="center">
+    <button ion-button color="primary" round (click)=sendCode()>{{'Next'|translate}}</button>
+
+    <button ion-button color="danger" round outline (click)="dismiss()">{{'Cancel'| translate}}</button>
+  </div>
+
+</ion-content>

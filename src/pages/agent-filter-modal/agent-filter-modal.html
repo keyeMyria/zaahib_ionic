@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Agent Filter Modal</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-row (click)="showList('AgencyServices')">
+    <ion-col col-9>
+      <ion-label color="primary" class="items" icon-right><b>{{'Services'|translate}}</b></ion-label>
+      <div class="items"><span *ngFor="let selectitem of searchProvider.modalData.AgencyServices.values;  let i=index"
+          class="selected-values">
+          {{i === 3 ? ' ,...' : '' }}{{i > 0 && i < 3 ? ', ' : '' }}{{i < 3 ? selectitem.name : '' }} </span> </div> </ion-col>
+            <ion-col col-3>
+            <ion-icon class="icone" name="ios-arrow-forward"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <hr />
+  <ion-row (click)="showLocationModal()">
+    <ion-col col-9>
+      <ion-label color="primary" class="items" icon-right><b>{{'Office Location'|translate}}</b></ion-label>
+      <div class="items"><span *ngFor="let location of searchProvider.selectedLocations;  let i=index" class="selected-values">
+          {{i === 1 ? ' ,...' : '' }}{{i < 1 ? searchProvider.getLocationName(location) : ' ' }} </span> </div> </ion-col>
+            <ion-col col-3>
+            <ion-icon class="icone" name="ios-arrow-forward"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <hr />
+  <ion-row (click)="showList('AgencyLanguages')">
+    <ion-col col-9>
+      <ion-label color="primary" class="items" icon-right><b>{{'Languages'|translate}}</b></ion-label>
+      <div class="items">
+        <span *ngFor="let selectitem of searchProvider.modalData.AgencyLanguages.values;  let i=index" class="selected-values">
+          {{i === 3 ? ' ,...' : '' }}{{i > 0 && i < 3 ? ', ' : '' }}{{i < 3 ? selectitem.name : '' }} </span> </div> </ion-col>
+            <ion-col col-3>
+            <ion-icon class="icone" name="ios-arrow-forward"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <hr />
+
+
+</ion-content>

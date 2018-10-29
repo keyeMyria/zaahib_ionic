@@ -1,0 +1,61 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+@charset 'UTF-8';
+// 1. Configuration and helpers
+@import 
+'../assets/sass/abstracts/variables',
+'../assets/sass/abstracts/functions',
+'../assets/sass/abstracts/mixins';
+// 2. Vendors
+// @import ;
+// 3. Base stuff
+@import 
+'../assets/sass/base/typography',
+'../assets/sass/base/fonts',
+'../assets/sass/base/base',
+'../assets/sass/base/helpers';
+// 4. Components
+@import 
+'../assets/sass/components/header/header',
+'../assets/sass/components/search/search',
+'../assets/sass/components/menu-list/menu-list',
+'../assets/sass/components/social/social',
+'../assets/sass/components/chat/chat',
+'../assets/sass/components/btn/btn',
+'../assets/sass/components/logo/logo',
+'../assets/sass/components/choice-option/choice-option',
+'../assets/sass/components/form/form',
+'../assets/sass/components/modal/modal',
+'../assets/sass/components/property-list/property-list',
+'../assets/sass/components/value-modal/value-modal',
+'../assets/sass/components/range/range',
+'../assets/sass/components/search-suggestions/search-suggestions',
+'../assets/sass/components/tabs/tabs',
+'../assets/sass/components/list-item/list-item',
+'../assets/sass/components/list-field/list-field',
+'../assets/sass/components/filter-results/filter-results',
+'../assets/sass/components/rating/rating',
+'../assets/sass/components/detail-map/detail-map',
+'../assets/sass/components/comments/comments';
+// 5. Themes
+@import 
+'../assets/sass/themes/default',
+'../assets/sass/themes/ionicons',
+'../assets/sass/themes/media';
+
+

@@ -1,0 +1,57 @@
+.filter-modal{
+    &__header{
+        @include flex();
+        align-items: center;
+        position: relative;
+        background: rgba(231, 233, 238, .5);
+        padding: 15px;
+        padding-top: 20px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        &::after{
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 3.5px;
+            background: rgba(#0F2355, .2);
+            border-radius: 3px;
+            left: 50%;
+            margin-left: -16.5px;
+            top: 5px;
+        }
+    }
+    &__wrapper{
+        height: calc(100% - 115px);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    &__grid{
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    &__choice{
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(#0F2355, .1);
+    }
+    &__btn{
+        font-size: 18px;
+    }
+}
+
+.center{
+    text-align: center;
+}
+
+.selected-values {
+    color: #18D579;
+}
+
+.filter-list{
+    &__value{
+        font-size: 12px;
+        margin: 0;
+        color: rgba(#0F2355, .5);
+        margin-top: 4px;
+        line-height: 1;
+    }
+}

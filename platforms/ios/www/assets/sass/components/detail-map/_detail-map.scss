@@ -1,0 +1,66 @@
+.detail-map {
+  width: 100%;
+  position: relative;
+  border-radius: 5px;
+  &__grid {
+    height: 400px;
+    width: 100%;
+  }
+  &__btn {
+    bottom: 10px;
+    z-index: 9999;
+    position: absolute;
+    //margin: 0 -12px 0 0;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: $white-color;
+    @include font-weight('bold');
+    //border-radius: 25px;
+    background: #18D579;
+    padding: 10px 10px;
+  }
+
+  &__direction{
+    bottom: 45px;
+    z-index: 9999;
+    position: absolute;
+    //margin: 0 -12px 0 0;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: $white-color;
+    @include font-weight('bold');
+    //border-radius: 25px;
+    background: #18D579;
+    padding: 10px 10px;
+
+  }
+    
+  #btnSatellite{
+    left:44px;
+  }
+
+  #btnMap{
+    left:100px;
+  }
+
+  #btnDirection{
+    left:65px;
+  }
+
+
+
+
+
+  .active{
+    background: #bdd4f1;
+  
+  }
+
+  &__address{
+    position: absolute;
+    top: 10px;
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

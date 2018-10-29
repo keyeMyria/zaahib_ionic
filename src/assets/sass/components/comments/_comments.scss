@@ -1,0 +1,66 @@
+.comments{
+    padding: 20px 15px;
+    &__header{
+        @include flex(row, center, space-between);
+    }
+    &__title{
+        margin: 0;
+        font-size: 12px;
+        color: rgba(15, 35, 85, 0.5);
+        text-transform: uppercase;
+    }
+    &__grid{
+        margin-top: 15px;
+    }
+    &__btn{
+        font-size: 14px;
+        color: $white-color;
+        @include font-weight('bold');
+        padding: 10px 15px;
+        border-radius: 25px;
+        background: #18D579;
+        &_full{
+            width: 100%;
+            text-align: center;
+            padding: 12px 15px;
+        }
+    }
+    &__footer{
+        margin-top: 15px;
+    }
+    &__item{
+        &:not(:last-child){
+            margin-bottom: 20px;
+        }
+        &-header{
+            @include flex(row, center, flex-start);
+        }
+        &-grid{
+            margin-top: 12px;
+            & p{
+                font-size: 14px;
+                color: #0F2355;
+                margin: 0;
+                line-height: 1.42;
+                &:not(:last-child){
+                    margin-bottom: 12px;
+                }
+            }
+        }
+    }
+    &__img{
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        & img{
+            border-radius: 50%;
+        }
+    }
+    &__name{
+        margin: 0;
+        font-size: 14px;
+        color: #0F2355;
+        @include font-weight('bold');
+        margin-left: 15px;
+    }
+}

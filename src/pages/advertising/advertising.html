@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-row>
+      <ion-col col-1 no-padding>
+        <button color="light" clear (click)="goback()" ion-button icon-only>
+          <ion-icon name="md-arrow-back"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-11>
+        <ion-title>{{'Ad Prices' | translate }}</ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="card" *ngFor="let ad of ads">
+    <ion-card-header class="head" text-wrap>
+      {{'LocationShort' | translate}} :<b> {{ad.Location | translate}} </b><br />
+      {{'Page' | translate}} : <b> {{ad.Page | translate}}</b>
+    </ion-card-header>
+    <ion-card-content color="primary">
+      <b [innerHtml]="this.globalProvider.selectedLanguage=== 'en' ? ad.SizeEn :ad.SizeAr"></b>
+      <br />
+      {{'Cost (1000 impressions)' | translate }}: <b> {{ad.Price}} {{this.globalProvider.countryData.CURRENCY}}</b>
+      <ion-buttons>
+        <button ion-button outline color="secondary" (click)="toggleExample(ad)" block>{{'Example' | translate }}</button>
+        <div> <img *ngIf="isExampleShown(ad)" class="div" src="{{this.globalProvider.countryData.SERVER_ADDRESS}}/{{ad.Image}}"
+            alt="image"> </div>
+        <button ion-button block (click)="gotoHelpPage()">{{'Order'| translate}}</button>
+      </ion-buttons>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

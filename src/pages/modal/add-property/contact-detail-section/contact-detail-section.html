@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Contact Detail</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only text-capitalize clear (click)="dismiss()">
+        Done
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+
+    <ion-item>
+        <ion-label color="primary">{{'Use Profile for Contacts' | translate}}</ion-label>
+        <ion-checkbox [(ngModel)]="addPropertyProvider.ContactDetal.UseProfileForContacts"></ion-checkbox>
+      </ion-item>
+      <hr />
+  <ion-item>
+    <ion-label color="primary">{{'Agency Name' | translate}}:</ion-label>
+    <ion-input [(ngModel)]="addPropertyProvider.ContactDetal.AgencyName"></ion-input>
+  </ion-item>
+  <hr />
+
+
+    <ion-list no-lines>
+      <ion-item>
+        <ion-icon class="country-icon" item-start>
+          <img src="assets/imgs/flags/flag-{{this.globalProvider.country}}.png" />
+        </ion-icon>
+        <ion-label>+{{this.countryCodeData[this.globalProvider.country].prefix}}</ion-label>
+        <ion-input type="text" [(ngModel)]="addPropertyProvider.ContactDetal.MobileNumber" placeholder="{{'Mobile Number'| translate}}"></ion-input>
+      </ion-item>
+  <hr />
+      <ion-item>
+          <ion-icon class="country-icon" item-start>
+            <img src="assets/imgs/flags/flag-{{this.globalProvider.country}}.png" />
+          </ion-icon>
+          <ion-label>+{{this.countryCodeData[this.globalProvider.country].prefix}}</ion-label>
+          <ion-input type="text" [(ngModel)]="addPropertyProvider.ContactDetal.PhoneNumber" placeholder="{{'Phone Number'| translate}}"></ion-input>
+        </ion-item>
+        <hr />
+        <ion-item>
+          <ion-label color="primary">{{'Email' | translate}}:</ion-label>
+          <ion-input [(ngModel)]="addPropertyProvider.ContactDetal.Email"></ion-input>
+        </ion-item>
+        <hr />
+    </ion-list>
+
+
+
+
+</ion-content>

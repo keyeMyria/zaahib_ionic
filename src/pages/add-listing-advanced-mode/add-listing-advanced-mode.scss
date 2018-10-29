@@ -1,0 +1,36 @@
+.center{
+    text-align: center;
+}
+
+.clHd{
+    color: blue;
+}
+
+.add-prop-section{
+display:inline-block;
+text-transform:uppercase;
+ 
+}
+.PrivateIDforlisting{
+    border:1px solid #ccc;
+}
+
+.PrivateComments{
+    border:1px solid #ccc; 
+    height: 150px;
+}
+
+.Blockss{
+    position: relative;
+    .Deletee{
+        position: absolute;
+        margin-left: 92%;
+        margin-top: 9px;
+        color: #ffffff;
+    }
+}
+
+.valid{
+    color: red;
+    border: 1px solid red;
+}

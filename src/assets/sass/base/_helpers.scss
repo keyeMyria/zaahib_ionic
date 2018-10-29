@@ -1,0 +1,8 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+%transition{
+    backface-visibility: hidden;
+    transition: all .23s linear;
+}

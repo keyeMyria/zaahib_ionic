@@ -1,0 +1,35 @@
+<div class="modal location-modal">
+  <ion-header>
+    <header class="template-header property-modal__header">
+      <button type="button" class="property-modal__btn property-modal__btn-cancel" (click)="dismiss()">Cancel</button>
+      <p class="title">Location</p>
+      <button type="button" class="property-modal__btn property-modal__btn-confirm" (click)="dismiss()">Done</button>
+    </header>
+  </ion-header>
+  <ion-content>
+    <div class="modal__grid location-modal__grid location-modal__grid_styled">
+      <header class="location-modal__header location-modal__header_styled">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+          <circle cx="6" cy="6" r="5.5" stroke="#0F2355" />
+          <path d="M0 0L4 4" transform="translate(10 10)" stroke="#0F2355" />
+        </svg>
+        <input type="text" name="location-search" class="location-modal__input" placeholder="Search">
+      </header>
+      <button type="button" (click)="push()" class="location-modal__map">
+        <svg width="13" height="18" viewBox="0 0 13 18" fill="none">
+          <path d="M5.71094 16.668C5.13542 15.8268 4.39388 14.7643 3.48633 13.4805C2.37956 11.8867 1.64909 10.8132 1.29492 10.2598C0.785807 9.46289 0.442708 8.79883 0.265625 8.26758C0.0885417 7.71419 0 7.08333 0 6.375C0 5.22396 0.28776 4.16146 0.863281 3.1875C1.4388 2.21354 2.21354 1.4388 3.1875 0.863281C4.16146 0.28776 5.22396 0 6.375 0C7.52604 0 8.58854 0.28776 9.5625 0.863281C10.5365 1.4388 11.3112 2.21354 11.8867 3.1875C12.4622 4.16146 12.75 5.22396 12.75 6.375C12.75 7.08333 12.6615 7.71419 12.4844 8.26758C12.3073 8.79883 11.9642 9.46289 11.4551 10.2598C11.1009 10.8132 10.3704 11.8867 9.26367 13.4805L7.03906 16.668C6.88411 16.8893 6.66276 17 6.375 17C6.08724 17 5.86589 16.8893 5.71094 16.668ZM6.375 9.03125C7.10547 9.03125 7.72526 8.77669 8.23438 8.26758C8.76562 7.73633 9.03125 7.10547 9.03125 6.375C9.03125 5.64453 8.76562 5.02474 8.23438 4.51562C7.72526 3.98438 7.10547 3.71875 6.375 3.71875C5.64453 3.71875 5.01367 3.98438 4.48242 4.51562C3.97331 5.02474 3.71875 5.64453 3.71875 6.375C3.71875 7.10547 3.97331 7.73633 4.48242 8.26758C5.01367 8.77669 5.64453 9.03125 6.375 9.03125Z"
+            transform="translate(0 0.125)" fill="#0F2355" />
+        </svg>
+        find on map
+      </button>
+      <div class="location-modal__container">
+        <div class="location-modal__list">
+          <label class="location-modal__list-item" *ngFor="let searchResult of searchResults">
+            <input type="checkbox" (click)="getItem(searchResult)" class="location-modal__list-input">
+            <p class="location-modal__list-name">{{searchResult.title}}</p>
+          </label>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</div>

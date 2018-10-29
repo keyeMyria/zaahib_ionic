@@ -1,0 +1,15 @@
+ <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <mask id="path-1-inside-1" fill="white">
+                <path d="M0 1C0 0.447715 0.447715 0 1 0H5C5.55228 0 6 0.447715 6 1H0Z" />
+              </mask>
+              <path d="M1 1H5V-1H1V1ZM6 0H0V2H6V0ZM5 1H7C7 -0.104569 6.10457 -1 5 -1V1ZM1 -1C-0.104569 -1 -1 -0.104569 -1 1H1V-1Z"
+                transform="translate(9 5)" fill="#1144CA" mask="url(#path-1-inside-1)" />
+              <path d="M0.5 2C0.5 1.17157 1.17157 0.5 2 0.5H22C22.8284 0.5 23.5 1.17157 23.5 2C23.5 5.03757 21.0376 7.5 18 7.5H6C2.96243 7.5 0.5 5.03757 0.5 2Z"
+                transform="translate(2 14)" stroke="#1144CA" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M1 0L0 2" transform="translate(5 21)" stroke="#1144CA" stroke-linecap="round" stroke-linejoin="round" />
+              <rect x="0.5" y="0.5" width="27" height="3" rx="1.5" transform="translate(0 11)" stroke="#1144CA" />
+              <path d="M2.7961e-08 10C2.7961e-08 10 0.000201147 7.12419 2.7961e-08 4C-0.000193096 1 1 0 4 0C7 0 8 2 8 4"
+                transform="translate(4 1)" stroke="#1144CA" />
+              <path d="M1 0L0 2" transform="translate(23 21) scale(-1 1)" stroke="#1144CA" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>

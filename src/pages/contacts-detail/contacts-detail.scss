@@ -1,0 +1,35 @@
+.contact-details{
+    &__map{
+        height: 330px;
+        width: 100%;
+    }
+    &__info{
+        padding: 15px;
+        padding-bottom: 5px;
+    }
+    &__address{
+        max-width: 275px;
+        margin: 0 auto;
+    }
+    &__grid{
+        @include flex(row, flex-start, flex-start);
+        flex-wrap: wrap;
+        margin-top: 25px;
+    }
+    &__item{
+        width: 50%;
+        margin-bottom: 25px;
+    }
+    &__name{
+        font-size: 12px;
+        color: rgba(15, 35, 85, .5);
+        text-transform: uppercase;
+        margin: 0;
+    }
+    &__value{
+        margin: 0;
+        font-size: 12px;
+        color: #0F2355;
+        margin-top: 4px;
+    }
+}

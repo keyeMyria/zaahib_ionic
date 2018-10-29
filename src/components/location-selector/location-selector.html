@@ -1,0 +1,28 @@
+<div>
+  <ion-list *ngIf="areaListProvince.length > 0">
+    <ion-item>
+      <ion-label>Province</ion-label>
+      <ion-select interface="action-sheet" placeholder="Select Provice">
+        <ion-option *ngFor="let province of areaListProvince" (ionSelect)="selectProvince(province)" value="{{province.AEn}}">{{province.AEn}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="areaListCity !== [] && areaListCity.length > 0">
+    <ion-item>
+      <ion-label>City</ion-label>
+      <ion-select interface="action-sheet" placeholder="Select City">
+        <ion-option *ngFor="let city of areaListCity" (ionSelect)="selectCity(city)" value="{{city.id}}">{{city.AEn}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="areaListDistrict !== [] && areaListDistrict.length > 0">
+    <ion-item>
+      <ion-label>District</ion-label>
+      <ion-select interface="action-sheet" placeholder="Select District">
+        <ion-option *ngFor="let district of areaListDistrict" (ionSelect)="selectDistrict(district)" value="{{district.id}}">{{district.AEn}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</div>

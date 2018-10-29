@@ -1,0 +1,26 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+//Font
+$font: 'Open Sans';
+$base-font-size: 16px;
+//Url
+$base-path: '../assets/';
+//Colors
+$black-color: #000;
+$white-color: #fff;
+$primary-color: #2D3E50;
+$second-color: #E88613;
+$third-color: #E6F1F6;
+$gray-color: #666666;
+$gray-color--lighter: #828282;
+$gray-color--lightest: #f2f2f2;
+$attention-color: #FF0000;
+$positive-color: #35B64A;
+//Font weight
+$font-weight: ( 
+    normal: normal,
+    light: 300,
+    semi: 600,
+    bold: bold
+);

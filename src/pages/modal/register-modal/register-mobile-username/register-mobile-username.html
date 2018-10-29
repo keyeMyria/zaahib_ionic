@@ -1,0 +1,39 @@
+
+<ion-content padding>
+
+  <ion-buttons end>
+    <button ion-button round clear (click)="dismiss()">
+      <ion-icon color="primary" name="close"></ion-icon>
+    </button>
+  </ion-buttons>
+
+  <ion-label color="primary" class="center">
+    <h1>{{'Register'|translate}}</h1>
+  </ion-label>
+
+
+  <form [formGroup]="registrationForm" (ngSubmit)="registerUser()">
+    <ion-list padding>
+
+      <ion-item>
+        <ion-label floating color="primary">{{'Email'|translate}}</ion-label>
+        <ion-input type="text" formControlName="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating color="primary">{{'Password'| translate}}</ion-label>
+        <ion-input type="password" formControlName="password" name="passwordOriginal"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating color="primary">{{'Confirm Password'|translate}}</ion-label>
+        <ion-input type="password" formControlName="confirmPassword" name="passwordConfirmed"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <div padding class="center">
+      <button ion-button round outline color="primary" [disabled]="username.invalid || password.invalid || confirmPassword.invalid"
+        type="submit">{{'Submit'|translate}}</button>
+    </div>
+  </form>

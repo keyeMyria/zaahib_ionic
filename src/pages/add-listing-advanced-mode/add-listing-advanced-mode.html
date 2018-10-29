@@ -1,0 +1,364 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{"Add Listing" | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <ion-row>
+    <ion-col>
+      <button ion-button block color="secondary" outline icon-left (click)="addListingSimplePage()">
+        <ion-icon name="md-thumbs-up"></ion-icon>{{"Switch to" | translate}} {{"Simple Mode" | translate}}
+      </button>
+    </ion-col>
+  </ion-row>
+  <hr />
+  <br />
+  <ion-row>
+    <ion-col col-10>
+      <ion-label>
+        <b> Listing Details</b>
+      </ion-label>
+    </ion-col>
+    <ion-col col-2 *ngIf="!addPropertyProvider.Edit">
+      <button ion-button clear (click)="listingDetailSectionPage()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-10>
+      <ion-label color="secondary" full clear *ngIf="addPropertyProvider.Edit">
+        <b> {{addPropertyProvider.propertyDetails.selectedPoperty.nameEn}} </b>
+      </ion-label>
+    </ion-col>
+    <ion-col col-2>
+      <button ion-button block full clear *ngIf="addPropertyProvider.Edit" (click)="Edit = !Edit">
+        <ion-icon (click)="listingDetailSectionPage()" color="secondary" name="md-create"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-10>
+      <ion-label>
+        <b> Location & Address </b>
+      </ion-label>
+    </ion-col>
+    <ion-col col-2 *ngIf="!addPropertyProvider.locationAndAddressActive">
+      <button ion-button clear (click)="locationAndAddressSectionPage()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-10>
+      <ion-label color="secondary" full clear *ngIf="addPropertyProvider.locationAndAddressActive">
+        <b> {{addPropertyProvider.location.selectedProvince}} </b>
+      </ion-label>
+    </ion-col>
+    <ion-col col-2>
+      <button ion-button block full clear *ngIf="addPropertyProvider.locationAndAddressActive" (click)="addPropertyProvider.locationAndAddressActive = !addPropertyProvider.locationAndAddressActive">
+        <ion-icon (click)="locationAndAddressSectionPage()" color="secondary" name="md-create"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-10>
+      <ion-label>
+        <b> Contact Details </b>
+      </ion-label>
+    </ion-col>
+    <ion-col col-2 *ngIf="!addPropertyProvider.editContact">
+      <button ion-button clear (click)="contactDetailSectionPage()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="addPropertyProvider.editContact">
+    <ion-col col-10>
+      <ion-label color="secondary" full clear>
+        <b> {{addPropertyProvider.ContactDetal.AgencyName}} </b>
+      </ion-label>
+    </ion-col>
+    <ion-col col-2>
+      <button ion-button clear (click)="addPropertyProvider.editContact = !addPropertyProvider.editContact">
+        <ion-icon (click)="contactDetailSectionPage()" color="secondary" name="md-create"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-10>
+      <ion-label>
+        <b> Features </b>
+      </ion-label>
+    </ion-col>
+    <ion-col col-2>
+      <button ion-button clear (click)="showList('Features')">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-10>
+      <ion-label>
+        <b> Extra Features </b>
+      </ion-label>
+    </ion-col>
+    <ion-col *ngIf="!showInput" col-2 (click)="shInput()">
+      <button ion-button clear (click)="shInput()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="showInput">
+    <ion-col col-10>
+      <ion-input type="text" class="PrivateIDforlisting" [(ngModel)]="extraFeatures" placeholder="Enter additional features"></ion-input>
+    </ion-col>
+    <ion-col col-2>
+      <button ion-button clear (click)="shInput()">
+        <ion-icon (click)="addExtFeatures(extraFeatures)" name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <div *ngIf="addPropertyProvider.ExtraFeatures != '' ">
+    <ion-row *ngFor="let feature of ExtraFeatures; let i=index">
+      <ion-col col-10>
+        <p color="secondary"><span color="secondary">{{feature}}</span> </p>
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button clear>
+          <ion-icon (click)="removeFeature(i)" color="secondary" name="md-close"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-row>
+    <!-- <ion-col col-12>
+      <ion-label>
+        <h2>Edit Listing</h2>
+      </ion-label>
+    </ion-col> -->
+    <ion-col col-10>
+      <ion-label>
+        <b>Add Some Photos</b>
+      </ion-label>
+    </ion-col>
+    <ion-col col-2 *ngIf="!pictureBoxShow">
+      <button ion-button clear (click)="pictureBox()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <div *ngIf="pictureBoxShow">
+    <!-- <ion-row>
+      <ion-col col-12>
+        <p>Photos make your ad standout, and lure people into it.</p>
+      </ion-col>
+    </ion-row> -->
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button block outline (click)="choosePicture()">
+          <ion-icon name="ios-image-outline"></ion-icon><b> &nbsp; Gallery &nbsp;</b>
+        </button>
+      </ion-col>
+
+      <ion-col col-6>
+        <button ion-button block outline color="secondary" (click)="takePicture()">
+          <ion-icon name="camera"></ion-icon><b> &nbsp; Camera &nbsp;</b>
+        </button>
+      </ion-col>
+    </ion-row>
+    
+      <ion-row>
+        <ion-col col-6 *ngFor="let p of Photos; let id = index">
+            <div>
+                <ion-card class="Blockss">
+                    <ion-icon (click)="deletePicture(id)" class="Deletee" name="trash"></ion-icon>
+                  <img [src]="p" *ngIf="p" />
+                  <div class="card-title">Madison</div>
+                  <div class="card-subtitle">28 Listings</div>
+                </ion-card>
+            </div>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row>
+          <ion-col col-6>
+              <div>
+                  <ion-card class="Blockss">
+                      <ion-icon (click)="deletePicture(id)" class="Deletee" name="trash"></ion-icon>
+                  1  <img [src]="base64Image" />
+                  2  <img src="data:image/jpeg;base64,file:///storage/emulated/0/Android/data/io.ionic.davapp/cache/1540458619262.jpg" />
+                  3  <img src="///storage/emulated/0/Android/data/io.ionic.davapp/cache/1540458619262.jpg" />
+                  4  <img src="//storage/emulated/0/Android/data/io.ionic.davapp/cache/1540458619262.jpg" />
+                  5  <img src="/storage/emulated/0/Android/data/io.ionic.davapp/cache/1540458619262.jpg" />
+                  6  <img [src]="imageData" />
+
+                  
+
+
+                    <div class="card-title">Madison</div>
+                    <div class="card-subtitle">28 Listings</div>
+                  </ion-card>
+              </div>
+          </ion-col>
+        </ion-row> -->
+
+  </div>
+
+  <ion-row>
+    <ion-col col-10>
+      <ion-label>
+        <b> YouTube Video ID </b>
+      </ion-label>
+    </ion-col>
+    <ion-col col-2>
+      <button ion-button clear (click)="YouTubeVideoID()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="YouTubeVideo">
+    <ion-col col-12>
+      <ion-input type="text" class="PrivateIDforlisting" [(ngModel)]="addPropertyProvider.YouTubeVideoUrl" placeholder="Enter YouTube Video link"></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-10>
+      <ion-label>
+        <b> Streets Binding </b>
+      </ion-label>
+    </ion-col>
+    <ion-col col-2 *ngIf="!Streets">
+      <button ion-button clear (click)="StreetsBinding()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <div *ngIf="Streets">
+    <ion-row>
+      <ion-col col-10>
+        <ion-label>
+          <h5> Street #{{street.id==5 ? 4 : street.id}} </h5>
+        </ion-label>
+      </ion-col>
+      <ion-col col-2 *ngIf="streetLimit">
+        <button ion-button clear (click)="addStreet({street : street})">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <div *ngIf="streetLimit">
+      <ion-row>
+        <ion-col col-3>
+          <ion-input type="text" [(ngModel)]="street.Width<1 ? '' : street.Width" placeholder="Width"></ion-input>
+        </ion-col>
+        <ion-col col-3>
+          <ion-input type="text" [(ngModel)]="street.Length<1 ? '' : street.Length" placeholder="Length"></ion-input>
+        </ion-col>
+        <ion-col col-6>
+          <ion-select padding-left=0 margin-right=0 [(ngModel)]="street.Facing" interface="action-sheet" placeholder="Face">
+            <ion-option *ngFor="let Facing of addPropertyProvider.selectFacing" [value]="Facing">{{Facing}}</ion-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ion-label *ngFor="let st of streetBinding">
+      <p>Street #{{st.street.id}} Width: {{st.street.Width}} Length: {{st.street.Length}} Face:{{st.street.Facing}}</p>
+    </ion-label>
+  </div>
+
+  <ion-row>
+    <ion-col col-10>
+      <ion-label>
+        <b> Location Details </b>
+      </ion-label>
+    </ion-col>
+    <ion-col col-2 *ngIf="!location">
+      <button ion-button clear (click)="LocationDetails()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="location">
+    <br />
+    <p>Tip: Add extra description of the location!</p>
+    <ion-col col-12>
+      <ion-input type="text" class="PrivateIDforlisting" [(ngModel)]="addPropertyProvider.LocationDetails" placeholder="Add extra description of the location!"></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-10>
+      <ion-label>
+        <b> Options </b>
+      </ion-label>
+    </ion-col>
+    <ion-col col-2 *ngIf="!Option">
+      <button ion-button clear (click)="Options()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="Option">
+    <br />
+    <ion-col col-12>
+      <ion-item>
+        <ion-label>Do not repost to Facebook </ion-label>
+        <ion-checkbox [(ngModel)]="addPropertyProvider.Options.doNotRepostToFacebook"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Do not repost to Twitter</ion-label>
+        <ion-checkbox [(ngModel)]="addPropertyProvider.Options.doNotRepostToTwitter "></ion-checkbox>
+      </ion-item>
+    </ion-col>
+    <h6>
+      <ion-icon name="ios-information-circle-outline"></ion-icon>
+      You can enable or disable listing repost from your profile page!
+    </h6>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-10>
+      <ion-label>
+        <b> Private Data </b>
+      </ion-label>
+    </ion-col>
+    <ion-col col-2 *ngIf="!privateData">
+      <button ion-button clear (click)="PrivateData()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="privateData">
+    <br />
+    <p>This optional section contains your private data
+      and comments about the listing, it will not be shown to anybody</p>
+    <ion-col col-12 >
+      <ion-input type="text" class="PrivateIDforlisting" (focusout)="valid(addPropertyProvider.PrivateData.PrivateIDforlisting)" [(ngModel)]="addPropertyProvider.PrivateData.PrivateIDforlisting"
+        placeholder="Private ID for listing"></ion-input>
+        {{truee}}
+      <br />
+      <ion-textarea type="textarea" [class.PrivateComments]="addPropertyProvider.PrivateData.PrivateComments > 1" [class.valid]="addPropertyProvider.PrivateData.PrivateComments < 1" (focusout)="valid(addPropertyProvider.PrivateData.PrivateComments)" [(ngModel)]="PrivateComments ? 'Enter valid data' : addPropertyProvider.PrivateData.PrivateComments"
+        placeholder="Private Comments"></ion-textarea>
+    </ion-col>
+  </ion-row>
+
+
+
+  <hr />
+</ion-content>

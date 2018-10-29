@@ -1,0 +1,37 @@
+.map-detail{
+    &__top{
+        height: 380px;
+        width: 100%;
+    }
+    &__item{
+        position: relative;
+        @include flex(row, center, flex-start);
+        padding: 20px 25px;
+        padding-right: 30px;
+        border-bottom: 1px solid rgba(#0F2355, .1);
+    }
+    &__name{
+        margin: 0;
+        font-size: 12px;
+        color: #0F2355;
+        text-transform: uppercase;
+        max-width: 230px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    &__length{
+        font-size: 14px;
+        margin: 0;
+        color: #0F2355;
+        margin-left: auto;
+    }
+    &__icon{
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -8px;
+        width: 10px;
+        height: 16px;
+    }
+}

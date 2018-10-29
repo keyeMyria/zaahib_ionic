@@ -1,0 +1,73 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title style="text-align:center">Sort</ion-title>
+    <ion-buttons end>
+      <button ion-button clear (click)="done()">Done</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row (click)="relevance()">
+      <ion-col col-3 no-padding>
+        <ion-icon class="check" *ngIf="Relevance" color="primary" name="md-checkmark"></ion-icon>
+      </ion-col>
+      <ion-col col-9>
+        <ion-label color="primary" icon-left>
+          Relevance
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <hr>
+    <ion-row (click)="thenewest()">
+      <ion-col col-3 no-padding>
+        <ion-icon class="check" *ngIf="Thenewest" color="primary" name="md-checkmark"></ion-icon>
+      </ion-col>
+      <ion-col col-9>
+        <ion-label color="primary" icon-left>
+          The newest
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <hr>
+    <ion-row (click)="lowPrice()">
+      <ion-col col-3 no-padding>
+        <ion-icon class="check" *ngIf="LowPrice" color="primary" name="md-checkmark"></ion-icon>
+      </ion-col>
+      <ion-col col-9>
+        <ion-label color="primary" icon-left>
+          Low Price
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <hr>
+    <ion-row (click)="highestPrice()">
+      <ion-col col-3 no-padding>
+        <ion-icon class="check" *ngIf="HighestPrice" color="primary" name="md-checkmark"></ion-icon>
+      </ion-col>
+      <ion-col col-9>
+        <ion-label color="primary" icon-left>
+          Highest Price
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <hr>
+    <ion-row (click)="views()">
+      <ion-col col-3 no-padding>
+        <ion-icon class="check" *ngIf="Views" color="primary" name="md-checkmark"></ion-icon>
+      </ion-col>
+      <ion-col col-9>
+        <ion-label color="primary" icon-left>
+          Views
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <hr>
+  </ion-grid>
+
+</ion-content>

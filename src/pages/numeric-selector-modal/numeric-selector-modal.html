@@ -1,0 +1,48 @@
+
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <!-- <button ion-button clear (click)="close()">
+        Cancel
+      </button> -->
+    </ion-buttons>
+
+    <ion-title class="center">{{title}}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button clear round (click)="done()">{{'Ok'|translate}}</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid padding>
+
+    <ion-row>
+      <ion-col col-6>
+        <ion-list>
+          <ion-item>
+            <ion-label color="primary"  floating>{{'Minimum Value'|translate}}:</ion-label>
+            <ion-input type="number" min="1" max="99" [(ngModel)]="minValue" ></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col col-6>
+        <ion-list>
+          <ion-item>
+            <ion-label color="primary" floating>{{'Maximum Value'|translate}}:</ion-label>
+            <ion-input type="number"  [(ngModel)]="maxValue" ></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>

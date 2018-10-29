@@ -1,0 +1,31 @@
+<ion-header style="height: 55px;">
+  <ion-navbar color="primary" no-padding>
+
+    <ion-row>
+      <ion-col col-3>
+        <button (click)="goback()" clear no-padding color="light" ion-button icon-only>
+          <ion-icon name="md-arrow-back"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-9 class="titleCol" padding>
+        <ion-title style="text-align: center-">{{'Chat'|translate}}</ion-title>
+      </ion-col>
+    </ion-row>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item *ngFor="let item of items" (click)="gotoMessage2Page(item)">
+      <ion-thumbnail item-start>
+        <img src="{{item.img}}" alt="image">
+      </ion-thumbnail>
+      <h2>{{item.id}}</h2>
+      <p>{{item.messages}}</p>
+      <p>{{item.time}}</p>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

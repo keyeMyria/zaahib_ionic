@@ -1,0 +1,36 @@
+<div class="push-page">
+  <ion-header>
+    <header class="push-page__header">
+      <button (click)="goBack()" type="button" class="back-btn">
+        <svg width="13" height="22" viewBox="0 0 13 22" fill="none">
+          <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="13" height="22">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.75946 0.412269L0.395654 9.40223C-0.131885 9.90796 -0.131885 10.7522 0.395654 11.26L9.75946 20.2479C10.3337 20.7993 11.2403 20.7993 11.8146 20.2479C12.4221 19.6643 12.4221 18.6923 11.8146 18.1077L3.97212 10.5788C3.82985 10.4428 3.82985 10.2174 3.97212 10.0814L11.8146 2.55254C12.4221 1.96892 12.4221 0.996923 11.8146 0.412269C11.5269 0.138115 11.1572 0 10.7875 0C10.4168 0 10.0471 0.138115 9.75946 0.412269Z"
+              transform="translate(0.571289 0.573242)" fill="white" />
+          </mask>
+          <g mask="url(#mask0)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.75946 0.412269L0.395654 9.40223C-0.131885 9.90796 -0.131885 10.7522 0.395654 11.26L9.75946 20.2479C10.3337 20.7993 11.2403 20.7993 11.8146 20.2479C12.4221 19.6643 12.4221 18.6923 11.8146 18.1077L3.97212 10.5788C3.82985 10.4428 3.82985 10.2174 3.97212 10.0814L11.8146 2.55254C12.4221 1.96892 12.4221 0.996923 11.8146 0.412269C11.5269 0.138115 11.1572 0 10.7875 0C10.4168 0 10.0471 0.138115 9.75946 0.412269Z"
+              transform="translate(0.571289 0.573242)" fill="white" />
+          </g>
+        </svg>
+        Back
+      </button>
+      <p class="title push-page__title">Map</p>
+    </header>
+  </ion-header>
+  <ion-content>
+    <div class="push-page__grid map-detail">
+      <div class="map-detail__top"></div>
+      <div class="map-detail__list">
+        <div class="map-detail__item" *ngFor="let mapItem of mapsData.items">
+          <p class="map-detail__name">{{ mapItem.name }}</p>
+          <p class="map-detail__length">{{ mapItem.length }}</p>
+          <div class="map-detail__icon">
+            <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
+              <path opacity="0.2" d="M1 1L8 8L1 15" stroke="#0F2355" stroke-width="2" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</div>

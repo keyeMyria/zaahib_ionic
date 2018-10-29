@@ -1,0 +1,69 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-list>
+      <ion-item color="primary">
+        <ion-avatar item-start>
+          <img src="{{user.img}}" alt="imgae">
+        </ion-avatar>
+        <h2>{{user.id}}</h2>
+      </ion-item>
+    </ion-list>
+  </ion-navbar>
+  <ion-title class="center"> </ion-title>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card class="right" color="light">
+    <ion-card-content>
+      <p> {{user.messages}}</p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <b>{{user.id}} </b>
+      </ion-col>
+      <ion-col class="text-right">
+        {{user.time}}
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-card class="left" *ngFor="let user2info of user2">
+    <ion-card-content>
+      <p> {{user2info.messag}} </p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <b>admin@text.com</b>
+      </ion-col>
+      <ion-col class="text-right">
+        {{user2info.timee}}
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+
+
+  <ion-footer>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-8>
+          <ion-textarea type="text" [(ngModel)]="othermessage" placeholder="{{'Send message to ...'|translate}}" class="input"></ion-textarea>
+        </ion-col>
+
+        <ion-col col-4>
+          <ion-buttons>
+            <button ion-button large icon-left clear (click)="sendMessage(othermessage, currentTime)">
+              {{'Send'|translate}}<ion-icon class="sendIcon" name="send"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-footer>
+
+</ion-content>

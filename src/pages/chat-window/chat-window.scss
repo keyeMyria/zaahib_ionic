@@ -1,0 +1,24 @@
+
+
+.center{
+    text-align: center;
+}
+
+.left{
+    float: left;
+    color: #488aff;
+    width: 80%;
+}
+
+.right{
+    float: right;
+    width: 80%;
+}
+
+.text-right {
+    text-align: right;
+}
+
+html[dir=rtl] .sendIcon {
+    transform: rotate(180deg);
+}

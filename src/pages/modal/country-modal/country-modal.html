@@ -1,0 +1,24 @@
+<div class="modal country-modal">
+
+  <div (click)="dismiss()" class="modal__overlay"></div>
+  <div class="modal__grid country-modal__grid">
+    <div class="country-modal__container">
+      <div class="country-modal__list">
+        <ion-list>
+          <ion-item *ngFor="let country of globalProvider.countries">
+            <button (click)="getItem(country)">
+              <ion-icon class="country-icon" item-start>
+                <img src="assets/imgs/flags/flag-{{country.Country}}.png" />
+              </ion-icon>
+
+              {{ globalProvider.selectedLanguage === 'en' ? country.CountryNameEn : country.CountryNameAr }}
+
+            </button>
+          </ion-item>
+        </ion-list>
+
+      </div>
+    </div>
+  </div>
+
+</div>

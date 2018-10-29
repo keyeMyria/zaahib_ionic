@@ -1,0 +1,86 @@
+.home {
+    background: image('home-bg.jpg') no-repeat center center;
+    background-size: cover;
+    &__template {
+    @include flex(column, stretch, center);
+    height: 100%;
+    overflow: hidden;
+}
+&__header{
+    padding: 25px;
+    padding-top: 40px;
+    padding-bottom: 0;
+    margin-bottom: 20px;
+}
+&__title{
+      margin: 0;
+      text-align: center;
+      font-size: 17px;
+      color: #1144CA;
+      text-transform: uppercase;
+      margin-top: 30px;
+      line-height: 1.35;
+      & span{
+          display: block;
+          @include font-weight('bold');
+          font-size: 16px;
+      }
+  }
+  &__form{
+      margin-top: auto;
+  }
+}
+
+.searchIcon{
+    width:15px;
+    height:15px;
+    color:white;
+    position: absolute;
+    padding: 10px;
+}
+
+
+.logo{
+    background: none;
+}
+
+.location-icon{
+    //width:13px;
+    //height:18px;
+    font-size:20px;
+    padding:5px;
+    color: #1171CA;
+    
+}
+
+.txtSearch{
+    padding: 6px 30px;
+}
+
+.menu-btn{
+    margin: 0 10px;
+}
+
+.btnSearch{
+    margin:0 8px;
+}
+
+.bath-icon, .bed-icon{
+    padding:6px;
+}
+.no-scroll .scroll-content{
+    //overflow: hidden;
+  }
+
+  .center{
+      text-align: center;
+  }
+  
+  .selected-values {
+      color: #18D579;
+  }
+
+  .pad{
+    margin-left: 0px;
+    margin-top: 0px;
+  }

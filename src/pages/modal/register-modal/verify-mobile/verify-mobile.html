@@ -1,0 +1,33 @@
+<ion-content padding>
+
+  <ion-buttons end>
+    <button ion-button round clear (click)="dismiss()">
+      <ion-icon color="primary" name="close"></ion-icon>
+    </button>
+  </ion-buttons>
+
+  <ion-label color="primary" class="center">
+    <h1>{{'Register'|translate}}</h1>
+  </ion-label>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label color="primary" floating>
+        {{'Enter Verification Code' | translate}}
+      </ion-label>
+
+      <ion-input type="text" [(ngModel)]="verificationCode" color="primary"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div class="center">
+    <!-- change to verifyMobile() for avoiding bypass  -->
+    <button ion-button round type="button" (click)="verifyMobile()">{{'Next'|translate}}</button>
+    <button ion-button round color="danger" (click)="resendCode()" outline>{{'Resend'|translate}}</button>
+  </div>
+
+
+
+</ion-content>

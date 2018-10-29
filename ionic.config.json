@@ -1,0 +1,7 @@
+{
+  "name": "zaahib-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

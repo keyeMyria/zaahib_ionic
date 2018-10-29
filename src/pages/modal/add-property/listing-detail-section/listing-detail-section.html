@@ -1,0 +1,127 @@
+
+<ion-header>
+  <ion-navbar color="primary">
+          <ion-title>Listing Details</ion-title>  
+          <ion-buttons end>
+              <button ion-button icon-only text-capitalize clear (click)="done()">
+                  Done
+              </button>
+          </ion-buttons>      
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-label color="danger"><p>{{validationMessage}}</p></ion-label>
+
+    <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label color="primary">{{'Category' | translate}}</ion-label>
+            <ion-select interface="action-sheet" placeholder="Category" [(ngModel)]="addPropertyProvider.propertyDetails.selectedCategory" okText='{{"Ok" | translate}}' cancelText='{{"Cancel" | translate}}'>
+              <ion-option color="primary" [value]="item" *ngFor="let item of listingCategoryList">{{globalProvider.selectedLanguage
+                == "en" ? item.nameEn : item.nameAr}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <hr />
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label color="primary">{{"Type" | translate}}</ion-label>
+            <ion-select interface="action-sheet" placeholder="Type" [(ngModel)]="addPropertyProvider.propertyDetails.selectedPoperty" okText='{{"Ok" | translate}}' cancelText='{{"Cancel" | translate}}'>
+              <ion-option color="primary" [value]="item" *ngFor="let item of propertyTypeList">{{globalProvider.selectedLanguage
+                == "en" ? item.nameEn : item.nameAr}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <hr />
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label color="primary">{{'Title' | translate}}:</ion-label>
+            <ion-input type="text" [class.valid]="!isValidTitle" [(ngModel)]="addPropertyProvider.propertyDetails.Title"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <hr />
+      <ion-row *ngIf="addPropertyProvider.propertyDetails.selectedCategory.id == 154">
+        <ion-col>
+          <ion-item>
+            <ion-label color="primary">{{'Rent' | translate}}:</ion-label>
+            <ion-input type="number" (focusout)="rent()" [class.valid]="!isValidRent" [(ngModel)]="addPropertyProvider.propertyDetails.Rent"></ion-input>
+          </ion-item>
+          <hr />
+          <ion-item>
+            <ion-label color="primary">{{"Per" | translate}}</ion-label>
+            <ion-select interface="action-sheet" placeholder="Per" [(ngModel)]="addPropertyProvider.propertyDetails.rentAmount" okText='{{"Ok" | translate}}' cancelText='{{"Cancel" | translate}}'>
+              <ion-option color="primary" [value]="item.id" *ngFor="let item of rentAmountPerList">{{globalProvider.selectedLanguage
+                == "en" ? item.nameEn : item.nameAr}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <hr />
+        </ion-col>
+      </ion-row>
+    
+      <ion-row>
+        <ion-col>
+          <ion-item *ngIf="listingProperties.Beds.show.indexOf(addPropertyProvider.propertyDetails.selectedPoperty.id) != -1">
+            <ion-label color="primary">{{'Beds' | translate}}:</ion-label>
+            <ion-input type="number" (focusout)="beds()" [class.valid]="!isValidBeds" [(ngModel)]="addPropertyProvider.propertyDetails.Beds"></ion-input>
+          </ion-item>
+          <hr *ngIf="listingProperties.Beds.show.indexOf(addPropertyProvider.propertyDetails.selectedPoperty.id) != -1">
+          <ion-item *ngIf="listingProperties.Rooms.show.indexOf(addPropertyProvider.propertyDetails.selectedPoperty.id) != -1">
+            <ion-label color="primary">{{'Rooms' | translate}}:</ion-label>
+            <ion-input type="number" (focusout)="rooms()" [class.valid]="!isValidRooms" [(ngModel)]="addPropertyProvider.propertyDetails.Rooms"></ion-input>
+          </ion-item>
+          <hr *ngIf="listingProperties.Rooms.show.indexOf(addPropertyProvider.propertyDetails.selectedPoperty.id) != -1">
+          <ion-item *ngIf="listingProperties.SquareMeter.show.indexOf(addPropertyProvider.propertyDetails.selectedPoperty.id) != -1">
+            <ion-label color="primary">{{'SquareMeter' | translate}}:</ion-label>
+            <ion-input type="number" (focusout)="squareMeter()" [class.valid]="!isValidSquareMeter" [(ngModel)]="addPropertyProvider.propertyDetails.SquareMeter"></ion-input>
+          </ion-item>
+          <hr *ngIf="listingProperties.SquareMeter.show.indexOf(addPropertyProvider.propertyDetails.selectedPoperty.id) != -1">
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="addPropertyProvider.propertyDetails.selectedCategory.id == 153">
+        <ion-col>
+          <ion-item>
+            <ion-label color="primary">{{'Price' | translate}}:</ion-label>
+            <ion-input type="number" (focusout)="price()" [class.valid]="!isValidPrice" [(ngModel)]="addPropertyProvider.propertyDetails.Price"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <hr *ngIf="addPropertyProvider.propertyDetails.selectedCategory == 153" />
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label color="primary">{{'Installments Accepted' | translate}}</ion-label>
+            <ion-checkbox [(ngModel)]="addPropertyProvider.propertyDetails.InstallmentsAccepted"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <hr>
+      <ion-row>
+        <ion-col>
+          <ion-item *ngIf="listingProperties.Baths.show.indexOf(addPropertyProvider.propertyDetails.selectedPoperty) != -1">
+            <ion-label color="primary">{{'Baths' | translate}}:</ion-label>
+            <ion-input type="number" (focusout)="baths()" [class.valid]="!isValidBaths" [(ngModel)]="addPropertyProvider.propertyDetails.Baths"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <hr *ngIf="listingProperties.Baths.show.indexOf(addPropertyProvider.propertyDetails.selectedPoperty) != -1">
+      <ion-row>
+        <ion-col>
+          <ion-item *ngIf="listingProperties.PricePerSQM.show.indexOf(addPropertyProvider.propertyDetails.selectedPoperty) != -1">
+            <ion-label color="primary">{{globalProvider.selectedLanguage == "en" ? listingProperties.PricePerSQM.nameEn :
+              listingProperties.PricePerSQM.nameAr}}:</ion-label>
+            <ion-input type="number" (focusout)="pricePerSQM()" [class.valid]="!isValidPricePerSQM" [(ngModel)]="addPropertyProvider.propertyDetails.PricePerSQM"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <hr *ngIf="listingProperties.PricePerSQM.show.indexOf(addPropertyProvider.propertyDetails.selectedPoperty) != -1">
+
+
+</ion-content>

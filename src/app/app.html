@@ -1,0 +1,84 @@
+<ion-menu class="template-menu" type="overlay" [attr.side]="this.platform.dir()==='ltr'?'right':'left'" [content]="content">
+  <div class="template-menu__header">
+    <div class="template-menu__options">
+      <Button class="template-menu__options-item select-item" (click)="showCountryModal()">
+        <ion-label no-margin>{{ globalProvider.selectedLanguage === 'en' ?
+          globalProvider.selectedCountry.CountryNameEn : globalProvider.selectedCountry.CountryNameAr }}</ion-label>
+        <span> <i class="fa fa-angle-down"></i></span>
+      </Button>
+      <Button (click)="switchLanguage()" class="template-menu__options-item select-item">
+        {{ globalProvider.selectedLanguage === 'en' ? 'عربي':'English' }}
+      </Button>
+    </div>
+    <div class="template-menu__auth">
+      <button ion-button round block large class="btn auth-btn" (click)="btnLoginActionSheet()" *ngIf="!this.globalProvider.isAuthenticated">
+        <i class="fa fa-bars fa-lg lgnbtnBars"></i>{{'Login'|translate}} /{{'Register'|translate}}</button>
+      <button ion-button round block large class="btn auth-btn" (click)="btnUserActionSheet()" *ngIf="this.globalProvider.isAuthenticated">
+        <ion-avatar item-left><img class="user-img" src="{{this.globalProvider.countryData.SERVER_ADDRESS}}/user_profile_picture/{{idToURLPath(this.globalProvider.userData.user.sid)}} + 'picture_' + {{this.globalProvider.userData.user.version_identifier}} + '.jpg'"></ion-avatar>{{globalProvider.userData.user.username}}
+      </button>
+    </div>
+  </div>
+  <div class="menu-options">
+    <button ion-button class="menu-options__item" (click)="addListingAdvancedPage()" menuClose>
+      <div class="menu-options__icon">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </div>
+      <span>{{'Post'|translate}}</span>
+    </button>
+    <button ion-button class="menu-options__item">
+      <div class="menu-options__icon">
+        <img src="assets/icon/price-icon.svg" item-start>
+      </div>
+      <span>{{'Property Prices'|translate}}</span>
+    </button>
+    <button ion-button class="menu-options__item" (click)="searchAgent()" menuClose>
+      <div class="menu-options__icon">
+        <!-- <i class="fa fa-users" aria-hidden="true"></i> -->
+        <ion-icon name="ios-people-outline" class="seller-icon"></ion-icon>
+      </div>
+      <span>{{'Sellers'|translate}}</span>
+    </button>
+  </div>
+
+  <div class="menu-list">
+    <button class="menu-list__item" menuClose *ngFor="let p of pages" (click)="openPage(p)">{{p.title|translate}}</button>
+  </div>
+
+
+
+  <div class="template-menu__footer">
+    <div class="social">
+      <button ion-button full class="fb social__item">
+        <!-- <ion-icon name="logo-facebook"></ion-icon> -->
+        <i class="fa fa-facebook-f fa-lg"></i>
+      </button>
+      <button ion-button full class="twitter social__item">
+        <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+      </button>
+      <button ion-button full class="google social__item">
+        <i class="fa fa-google-plus fa-lg" aria-hidden="true"></i>
+      </button>
+      <button ion-button full class="instagram social__item">
+        <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+      </button>
+      <button ion-button full class="youtube social__item">
+        <!-- <i class="fa fa-youtube fa-lg" aria-hidden="true"></i> -->
+        <ion-icon name="logo-youtube"></ion-icon>
+      </button>
+    </div>
+    <button ion-button full class="chat" id="btnchat" (click)="ChatSubjectsPage()" >
+      <div class="chat__icon">
+        <i class="fa fa-comment fa-2x fa-flip-horizontal" aria-hidden="true"></i>
+        <p class="notifications chat__notifications">15</p>
+      </div>
+      <p class="chat__text">{{'Chat'|translate}}</p>
+    </button>
+  </div>
+  <button ion-button full large class="close-btn" menuClose>
+    <!-- <i class="fa fa-times fa-2x" aria-hidden="true"></i> -->
+    <ion-icon name="close" large></ion-icon>
+  </button>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

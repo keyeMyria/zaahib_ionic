@@ -1,0 +1,15 @@
+.search{
+    &__form{
+        position: relative;
+    }
+    &__input{
+        height: 37px;
+        width: 100%;
+        background: rgba($black-color, .2);
+        border-radius: 5px;
+        padding: 6px;
+        padding-left: 40px;
+        padding-right: 10px;
+        line-height: 1;
+    }
+}

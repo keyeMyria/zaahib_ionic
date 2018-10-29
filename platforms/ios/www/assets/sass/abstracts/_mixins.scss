@@ -1,0 +1,72 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Hugo Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+
+@mixin flex($flex-direction: row, $align-items: flex-start,  $justify-content: flex-start) {
+      display: flex;
+      flex-direction: $flex-direction;
+      justify-content: $justify-content;
+      align-items: $align-items;
+}
+
+@mixin font-weight($weight){
+  @if $weight == 'normal'{
+    font-weight: map-get($font-weight, $weight);
+  }
+  @else if $weight == 'light'{
+    font-weight: map-get($font-weight, $weight);
+  }
+  @else if $weight == 'bold'{
+    font-weight: map-get($font-weight, $weight);
+  }
+  @else if $weight == 'semi'{
+    font-weight: map-get($font-weight, $weight);
+  }
+}
+
+@mixin border-radius($top, $right, $bottom, $left){
+  border-radius: $top $right $bottom $left;
+}
+
+@mixin border($width, $type, $color){
+  border: $width+px $type $color;
+}
+
+@mixin font(){
+    font-family: $font;
+}
+
+@mixin color-opacity($color, $opacity){
+  color: rgba($color, $opacity);
+}

@@ -1,0 +1,39 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{"Add Listing" | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <button ion-button outline icon-left (click)="addListingAdvancedPage()"><ion-icon name="md-thumbs-up"></ion-icon>{{"Switch to" | translate}} {{"Advanced Mode" | translate}}</button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <h3 class="cl">
+        {{"Add listing using" | translate}} {{"Simple Mode" | translate}}
+      </h3>
+      <p class="cl">
+        {{"We encourage you to add your listing using advanced mode and enter the details of your Ad using the steps, but if you have the Ad is ready or don't have time to fill the details you can just do it using this way ( simple mode)"|translate}}
+      </p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-textarea color="primary" style="border: 1px solid #488aff"></ion-textarea>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <button ion-button color="secondary" block >{{"Send" | translate}}</button>
+    </ion-col>
+  </ion-row>
+
+
+</ion-content>

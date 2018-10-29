@@ -1,0 +1,33 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-buttons left>
+        <!-- <button ion-button clear (click)="close()">
+            <ion-icon large name="md-arrow-back"></ion-icon>
+        </button> -->
+      </ion-buttons>
+      <ion-title class="center">
+        <ion-icon name="filter"></ion-icon> Search
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button clear round (click)="done()">Done</button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+
+  <ion-row>
+    <ion-col col-12 class="center" >
+      <button ion-button class="center" round outline color="primary" (click)="agentFilterModal()" >Add Filters</button>
+    <!-- </ion-col>
+    <ion-col col-6> -->
+        <button ion-button class="center" round outline color="secondary" >Sorting</button>
+    </ion-col>
+
+  </ion-row>
+
+ 
+</ion-content>

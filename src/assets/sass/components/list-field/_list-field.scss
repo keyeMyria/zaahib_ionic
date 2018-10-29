@@ -1,0 +1,26 @@
+.list-field {
+  @include flex(column, flex-start, center);
+  padding: 0 15px;
+  height: 48px;
+  padding-right: 40px;
+  position: relative;
+  border-bottom: 1px solid rgba(#0F2355, .1);
+  &_styled {
+    padding-right: 15px;
+    @include flex(row, center, space-between);
+  }
+  &__name {
+    font-size: 16px;
+    margin: 0;
+    color: #0F2355;
+    line-height: 1;
+  }
+  &__icon {
+    width: 10px;
+    height: 17px;
+    position: absolute;
+    top: 50%;
+    margin-top: -8.5px;
+    right: 15px;
+  }
+}

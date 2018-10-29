@@ -1,0 +1,20 @@
+.features-page{
+    padding: 20px 15px;
+    &__item{
+        @include flex(row, center, flex-start);
+        margin-bottom: 30px;
+    }
+    &__icon{
+        @include flex(row, center, center);
+        width: 32px;
+        margin-right: 30px;
+        & img{
+            max-width: 32px;
+        }
+    }
+    &__name{
+        color: #0F2355;
+        font-size: 16px;
+        margin: 0;
+    }
+}

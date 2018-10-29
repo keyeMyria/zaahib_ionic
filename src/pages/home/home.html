@@ -1,0 +1,112 @@
+<ion-header class="template-header">
+  <!-- <div class="template-header__grid">
+    <div class="search template-header__search">
+      <form class="form search__form">
+
+        <ion-icon class="searchIcon" name="search"></ion-icon>
+
+        <input class="search__input txtSearch" type="text" name="s" [(ngModel)]="searchInput" placeholder="{{'Search'|translate}}">
+
+
+      </form> -->
+      <!-- Begin suggestions -->
+      <!-- <div style="display: none;" class="search-suggestions">
+        <div class="search-suggestions__overlay"></div>
+        <div class="search-suggestions__grid">
+          <header class="search-suggestions__header">Property type</header>
+          <div class="search-suggestions__content">
+            <p class="search-suggestions__value">Villa</p>
+            <p class="search-suggestions__value">Holliday Villa</p>
+          </div>
+
+        </div>
+      </div> -->
+      <!-- End suggestions -->
+    <!-- </div>
+    <button type="button" class="btnSearch" menuToggle>
+
+      <i class="fa fa-bars fa-2x homebars"></i>
+      <p class="notifications menu-btn__notifications">15</p>
+    </button> 
+  </div>-->
+  <page-header></page-header>
+</ion-header>
+
+<ion-content class="home">
+  <div class="home__template" no-scroll>
+    <div class="home__header">
+      <div class="logo">
+        <ion-img width="130" class="logo" height="43" src="assets/imgs/logo-app.svg"></ion-img>
+      </div>
+      <h1 class="home__title">
+        {{'Searchptitle' | translate}}
+        <span>{{'Searchptitle2' | translate}} </span>
+
+      </h1>
+    </div>
+    <form class="form choice-form home__form">
+      <div class="home__choice choice-option">
+        <label class="choice-option__item">
+          <input [checked]="searchProvider.modalData.ListingCategory == 153" name="ListingCategory" type="radio" 
+            value="153" (click)="searchProvider.modalData.ListingCategory=153" class="choice-option__input">
+          <p class="choice-option__title">{{'For Sale'|translate}}</p>
+          <div class="choice-option__effect"></div>
+        </label>
+        <label class="choice-option__item">
+          <input [checked]="searchProvider.modalData.ListingCategory == 154" name="ListingCategory" type="radio" 
+            value="154" (click)="searchProvider.modalData.ListingCategory=154" class="choice-option__input">
+          <p class="choice-option__title">{{'For Rent'|translate}}</p>
+          <div class="choice-option__effect"></div>
+        </label>
+      </div>
+      <div class="choice-list choice-list_styled">
+        <div class="choice-list__row">
+        <div class="choice-list__item" (click)="showLocationModal()">
+          <p class="choice-list__name  center">
+            <ion-icon class="location-icon pad" name="ios-pin"></ion-icon>{{'LocationShort'|translate}}<br />
+            <span *ngFor="let location of searchProvider.selectedLocations;  let i=index" class="selected-values">
+                {{i === 1 ? ' ,...' : '' }}{{i < 1 ? searchProvider.getLocationName(location) : ' ' }} </span> </p> </div></div>
+                <!-- new item start here -->
+                <div class="choice-list__row">
+                  <div *ngIf="!propertyBoolVal" class="choice-list__item" (click)="showList('Type')">
+                    <p class="choice-list__name center">
+                      {{'Type'|translate}}<br />
+                      <span *ngFor="let selectitem of searchProvider.modalData.Type.values;  let i=index" class="selected-values">
+                          {{i === 3 ? ' ,...' : '' }}{{i > 0 && i < 3 ? ', ' : '' }}{{i < 3 ? selectitem.name : '' }} </span> </p> </div> </div>
+                          <div class="choice-list__row">
+                          <div class="choice-list__item" (click)="RangeSelectorModalPage('Price')">
+                            <p class="choice-list__name center">{{'Price'|translate}}<br />
+                              <span class="selected-values" *ngIf="searchProvider.modalData.Price.isDataValid">
+                                {{searchProvider.modalData.Price.lower | number }} -
+                                {{searchProvider.modalData.Price.upper | number }}
+                              </span>
+                            </p>
+                          </div>
+                  </div>
+
+                  <div class="choice-list__row">
+                    <div *ngIf="!bedroomBoolVal" class="choice-list__item choice-list__item_styled" (click)="NumericSelectorModalPage('Beds')">
+
+                      <img class="bed-icon" src="assets/icon/bed-icon.svg" item-start>
+
+                      <p class="choice-list__name center">
+                        {{globalProvider.selectedLanguage == "en" ?
+                        searchProvider.listingProperties.Beds.nameEn : searchProvider.listingProperties.Beds.nameAr}}<br />
+                        <span *ngIf="searchProvider.modalData.Beds.isDataValid" class="selected-values">
+                          {{searchProvider.modalData.Beds.min}} - {{searchProvider.modalData.Beds.max}} </span> </p>
+                    </div>
+                    <div class="choice-list__item choice-list__item_styled" (click)="NumericSelectorModalPage('Baths')">
+                      <img class="bath-icon" src="assets/icon/bath-icon.svg" item-start>
+
+                      <p class="choice-list__name center">
+                        {{globalProvider.selectedLanguage == "en" ?
+                        searchProvider.listingProperties.Baths.nameEn : searchProvider.listingProperties.Baths.nameAr}}<br />
+                        <span *ngIf="searchProvider.modalData.Baths.isDataValid" class="selected-values">
+                          {{searchProvider.modalData.Baths.min}} - {{searchProvider.modalData.Baths.max}} </span> </p>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" (click)="openPage()" class="form__btn btn-confirm">{{'Search'|translate}}</button>
+    </form>
+  </div>
+</ion-content>

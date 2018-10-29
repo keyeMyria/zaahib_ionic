@@ -1,0 +1,19 @@
+<ion-header>
+
+    <ion-row>
+        <ion-col col-3 no-padding>
+            <button color="primary" clear (click)="goback()" ion-button icon-only>
+                <ion-icon name="md-arrow-back"></ion-icon>
+            </button>
+        </ion-col>
+        <ion-col col-9>
+            <ion-title></ion-title>
+        </ion-col>
+    </ion-row>
+
+</ion-header>
+
+<ion-content padding>
+
+    <div [innerHtml]="terms"></div>
+</ion-content>

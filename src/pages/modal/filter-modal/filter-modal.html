@@ -1,0 +1,356 @@
+
+<div class="modal filter-modal">
+  <div (click)="dismiss()" class="modal__overlay"></div>
+  <div class="modal__grid filter-modal__wrapper">
+    <ion-header>
+      <header class="filter-modal__header">
+        <p class="modal__title filter-modal__title">{{'Filters'|translate}}</p>
+        <button (click)="dismiss()" type="button" class="modal__close">
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+            <path opacity="0.5" d="M0 0L7 7M14 14L7 7M7 7L14 0L0 14" transform="translate(1.5 1.5)" stroke="#0F2355"
+              stroke-width="2" />
+          </svg>
+        </button>
+      </header>
+      <div class="filter-modal__choice">
+        <div class="choice-option choice-option_styled">
+          <label class="choice-option__item choice-option__item_styled">
+            <input [checked]="searchProvider.modalData.ListingCategory == 153" type="radio" name="ListingCategory" 
+              class="choice-option__input" value="153" (click)="searchProvider.modalData.ListingCategory=153">
+            <p class="choice-option__title choice-option__title_styled">{{'Sell'|translate}}</p>
+            <div class="choice-option__effect"></div>
+          </label>
+          <label class="choice-option__item choice-option__item_styled">
+            <input [checked]="searchProvider.modalData.ListingCategory == 154" type="radio" name="ListingCategory" 
+              class="choice-option__input" value="154" (click)="searchProvider.modalData.ListingCategory=154">
+            <p class="choice-option__title choice-option__title_styled">{{'Rent'|translate}}</p>
+            <div class="choice-option__effect"></div>
+          </label>
+        </div>
+      </div>
+    </ion-header>
+    <ion-content class="filter-modal__grid">
+      <div class="filter-list">
+
+        <!-- (click)="showPropertyModal()" -->
+
+        <!-- Begin item -->
+        <div class="list-field filter-list__item" (click)="showList('Type')">
+          <p class="list-field__name filter-list__name">{{'Type'|translate}}</p>
+          <p class="filter-list__value">
+            <span *ngFor="let selectitem of searchProvider.modalData.Type.values;  let i=index" class="selected-values">
+                {{i === 2 ? ' ,...' : '' }}{{i > 0 && i < 2 ? ', ' : '' }}{{i < 2 ? selectitem.name : '' }} </span> </p> <div class="list-field__icon filter-list__icon">
+                <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+                  <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+                    stroke-width="2" />
+                </svg>
+        </div>
+      </div>
+      <!-- End item -->
+      <!-- Begin item -->
+      <div class="list-field filter-list__item" (click)="showLocationModal()">
+        <p class="list-field__name filter-list__name">{{'LocationShort'|translate}}</p>
+        <p class="filter-list__value selected-values">
+            <span *ngFor="let location of searchProvider.selectedLocations;  let i=index" class="selected-values">
+                {{i === 1 ? ' ,...' : '' }}{{i < 1 ? searchProvider.getLocationName(location) : ' ' }} </span>
+          <!-- <span class="selected-values">Riyadh</span> -->
+        </p>
+        <div class="list-field__icon filter-list__icon">
+          <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+            <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+              stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <!-- End item -->
+
+      <!-- Begin item -->
+      <div class="list-field filter-list__item" (click)="DateSelectorModalPage()">
+        <p class="list-field__name filter-list__name">Posted On</p>
+        <p class="filter-list__value ">
+          <span class="selected-values">{{searchProvider.modalData.DateSelectorModalPage.from}}
+            {{searchProvider.modalData.DateSelectorModalPage.to}}</span>
+        </p>
+        <div class="list-field__icon filter-list__icon">
+          <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+            <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+              stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <!-- End item -->
+
+      <!-- Begin item -->
+      <div class="list-field filter-list__item" (click)="NumericSelectorModalPage('Beds')">
+        <p class="list-field__name filter-list__name">{{globalProvider.selectedLanguage == "en" ?
+          searchProvider.listingProperties.Beds.nameEn : searchProvider.listingProperties.Beds.nameAr}}</p>
+        <p class="filter-list__value" *ngIf="searchProvider.modalData.Beds.isDataValid">
+          <span class="selected-values">{{searchProvider.modalData.Beds.min}} - {{searchProvider.modalData.Beds.max}}</span>
+        </p>
+        <div class="list-field__icon filter-list__icon">
+          <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+            <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+              stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <!-- End item -->
+
+      <!-- Begin item -->
+      <div class="list-field filter-list__item" (click)="NumericSelectorModalPage('Rooms')">
+        <p class="list-field__name filter-list__name">{{globalProvider.selectedLanguage == "en" ?
+          searchProvider.listingProperties.Rooms.nameEn : searchProvider.listingProperties.Rooms.nameAr}}</p>
+        <p class="filter-list__value" *ngIf="searchProvider.modalData.Rooms.isDataValid">
+          <span class="selected-values">{{searchProvider.modalData.Rooms.min}} - {{searchProvider.modalData.Rooms.max}}</span>
+        </p>
+        <div class="list-field__icon filter-list__icon">
+          <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+            <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+              stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <!-- End item -->
+
+      <!-- Begin item -->
+      <div class="list-field filter-list__item" (click)="NumericSelectorModalPage('OfficeRooms')">
+        <p class="list-field__name filter-list__name">{{globalProvider.selectedLanguage == "en" ?
+          searchProvider.listingProperties.OfficeRooms.nameEn : searchProvider.listingProperties.OfficeRooms.nameAr}}</p>
+        <p class="filter-list__value" *ngIf="searchProvider.modalData.OfficeRooms.isDataValid">
+          <span class="selected-values">{{searchProvider.modalData.OfficeRooms.min}} -
+            {{searchProvider.modalData.OfficeRooms.max}}</span>
+        </p>
+        <div class="list-field__icon filter-list__icon">
+          <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+            <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+              stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <!-- End item -->
+
+      <!-- Begin item -->
+      <div class="list-field filter-list__item" (click)="NumericSelectorModalPage('PropertyAge')">
+        <p class="list-field__name filter-list__name">{{globalProvider.selectedLanguage == "en" ?
+          searchProvider.listingProperties.PropertyAge.nameEn : searchProvider.listingProperties.PropertyAge.nameAr}}</p>
+        <p class="filter-list__value" *ngIf="searchProvider.modalData.PropertyAge.isDataValid">
+          <span class="selected-values">{{searchProvider.modalData.PropertyAge.min}} -
+            {{searchProvider.modalData.PropertyAge.max}}</span>
+        </p>
+        <div class="list-field__icon filter-list__icon">
+          <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+            <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+              stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <!-- End item -->
+
+      <!-- Begin item -->
+      <div class="list-field filter-list__item" (click)="NumericSelectorModalPage('Units')">
+        <p class="list-field__name filter-list__name">{{globalProvider.selectedLanguage == "en" ?
+          searchProvider.listingProperties.Units.nameEn : searchProvider.listingProperties.Units.nameAr}}</p>
+        <p class="filter-list__value" *ngIf="searchProvider.modalData.Units.isDataValid">
+          <span class="selected-values">{{searchProvider.modalData.Units.min}} - {{searchProvider.modalData.Units.max}}</span>
+        </p>
+        <div class="list-field__icon filter-list__icon">
+          <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+            <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+              stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <!-- End item -->
+
+      <!-- Begin item -->
+      <div class="list-field filter-list__item" (click)="NumericSelectorModalPage('Baths')">
+        <p class="list-field__name filter-list__name">{{globalProvider.selectedLanguage == "en" ?
+          searchProvider.listingProperties.Baths.nameEn : searchProvider.listingProperties.Baths.nameAr}}</p>
+        <p class="filter-list__value" *ngIf="searchProvider.modalData.Baths.isDataValid">
+          <span class="selected-values">{{searchProvider.modalData.Baths.min}} - {{searchProvider.modalData.Baths.max}}</span>
+        </p>
+        <div class="list-field__icon filter-list__icon">
+          <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+            <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+              stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <!-- End item -->
+
+      <!-- Begin item -->
+      <div class="list-field list-field_styled filter-list__item filter-list__item_styled">
+        <p class="list-field__name filter-list__name">{{'Only with photo'|translate}}</p>
+        <ion-toggle [(ngModel)]="searchProvider.modalData.OnlyListingsWithPictures"></ion-toggle>
+      </div>
+      <!-- End item -->
+
+      <!-- Begin item -->
+      <div class="list-field filter-list__item" (click)="NumericSelectorModalPage('NumberOfLevels')">
+        <p class="list-field__name filter-list__name">{{globalProvider.selectedLanguage == "en" ?
+          searchProvider.listingProperties.NumberOfLevels.nameEn :
+          searchProvider.listingProperties.NumberOfLevels.nameAr}}</p>
+        <p class="filter-list__value" *ngIf="searchProvider.modalData.NumberOfLevels.isDataValid">
+          <span class="selected-values">{{searchProvider.modalData.NumberOfLevels.min}} -
+            {{searchProvider.modalData.NumberOfLevels.max}}</span>
+        </p>
+        <div class="list-field__icon filter-list__icon">
+          <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+            <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+              stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <!-- End item -->
+
+      <!-- this is a neww additions -->
+      <!-- Begin item -->
+      <div class="list-field filter-list__item" (click)="NumericSelectorModalPage('LevelNo')">
+        <p class="list-field__name filter-list__name">{{globalProvider.selectedLanguage == "en" ?
+          searchProvider.listingProperties.LevelNo.nameEn : searchProvider.listingProperties.LevelNo.nameAr}}</p>
+        <p class="filter-list__value" *ngIf="searchProvider.modalData.LevelNo.isDataValid">
+          <span class="selected-values">{{searchProvider.modalData.LevelNo.min}} -
+            {{searchProvider.modalData.LevelNo.max}}</span>
+        </p>
+        <div class="list-field__icon filter-list__icon">
+          <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+            <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+              stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <!-- End item -->
+
+      <!-- Begin item -->
+      <div class="list-field filter-list__item" (click)="NumericSelectorModalPage('GarageSize')">
+        <p class="list-field__name filter-list__name">{{globalProvider.selectedLanguage == "en" ?
+          searchProvider.listingProperties.GarageSize.nameEn : searchProvider.listingProperties.GarageSize.nameAr}}</p>
+        <p class="filter-list__value" *ngIf="searchProvider.modalData.GarageSize.isDataValid">
+          <span class="selected-values">{{searchProvider.modalData.GarageSize.min}} -
+            {{searchProvider.modalData.GarageSize.max}}</span>
+        </p>
+        <div class="list-field__icon filter-list__icon">
+          <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+            <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+              stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <!-- End item -->
+
+      <!-- Begin item -->
+      <div class="list-field filter-list__item" (click)="showList('PropertyFinalizing')">
+        <p class="list-field__name filter-list__name">{{globalProvider.selectedLanguage == "en" ?
+          searchProvider.listingProperties.PropertyFinalizing.nameEn :
+          searchProvider.listingProperties.PropertyFinalizing.nameAr}}</p>
+        <p class="filter-list__value">
+          <span *ngFor="let selectitem of searchProvider.modalData.PropertyFinalizing.values;  let i=index" class="selected-values">
+            {{i > 0 && i < 6 ? ', ' : '' }}{{i < 6 ? selectitem.name : '' }} </span> </p> <div class="list-field__icon filter-list__icon">
+              <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+                <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+                  stroke-width="2" />
+              </svg>
+      </div>
+  </div>
+  <!-- End item -->
+
+  <!-- Begin item -->
+  <div class="list-field filter-list__item" (click)="NumericSelectorModalPage('Streets')">
+    <p class="list-field__name filter-list__name">Streets binding</p>
+    <p class="filter-list__value" *ngIf="searchProvider.modalData.Streets.isDataValid">
+      <span class="selected-values">{{searchProvider.modalData.Streets.min}} - {{searchProvider.modalData.Streets.max}}</span>
+    </p>
+    <div class="list-field__icon filter-list__icon">
+      <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+        <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+          stroke-width="2" />
+      </svg>
+    </div>
+  </div>
+  <!-- End item -->
+
+  <!-- Begin item -->
+  <div class="list-field filter-list__item" (click)="showList('Features')">
+    <p class="list-field__name filter-list__name">{{'Features'|translate}}</p>
+    <p class="filter-list__value">
+      <span *ngFor="let selectitem of searchProvider.modalData.Features.values;  let i=index" class="selected-values">
+          {{i === 6 ? ' ,...' : '' }}{{i > 0 && i < 6 ? ', ' : '' }}{{i < 6 ? selectitem.name : '' }} </span> </p> <div class="list-field__icon filter-list__icon">
+          <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+            <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+              stroke-width="2" />
+          </svg>
+  </div>
+</div>
+<!-- End item -->
+
+<!-- Begin item -->
+<div class="list-field filter-list__item" (click)="RangeSelectorModalPage('Price')">
+  <p class="list-field__name filter-list__name">{{'Price'|translate}}</p>
+  <p class="filter-list__value" *ngIf="searchProvider.modalData.Price.isDataValid">
+    <span class="selected-values"> {{searchProvider.modalData.Price.lower | number }} - {{searchProvider.modalData.Price.upper | number }}
+    </span>
+  </p>
+  <div class="list-field__icon filter-list__icon">
+    <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+      <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+        stroke-width="2" />
+    </svg>
+  </div>
+</div>
+<!-- End item -->
+
+<!-- Begin item -->
+<div class="list-field filter-list__item" (click)="showList('Per')">
+  <p class="list-field__name filter-list__name">{{'Per'|translate}}</p>
+  <p class="filter-list__value">
+    <span *ngFor="let selectitem of searchProvider.modalData.Per.values;  let i=index" class="selected-values">
+      {{i > 0 && i < 6 ? ', ' : '' }}{{i < 6 ? selectitem.name : '' }} </span> </p> <div class="list-field__icon filter-list__icon">
+        <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+          <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+            stroke-width="2" />
+        </svg>
+</div>
+</div>
+<!-- End item -->
+
+<!-- Begin item -->
+<div class="list-field filter-list__item" (click)="RangeSelectorModalPage('Rent')">
+  <p class="list-field__name filter-list__name">{{'Rent'|translate}}</p>
+  <p class="filter-list__value" *ngIf="searchProvider.modalData.Rent.isDataValid">
+    <span class="selected-values"> {{searchProvider.modalData.Rent.lower | number }} - {{searchProvider.modalData.Rent.upper | number }} </span>
+  </p>
+  <div class="list-field__icon filter-list__icon">
+    <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+      <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+        stroke-width="2" />
+    </svg>
+  </div>
+</div>
+<!-- End item -->
+
+<!-- Begin item -->
+<div class="list-field filter-list__item" (click)="RangeSelectorModalPage('SquareMeter')">
+  <p class="list-field__name filter-list__name">{{globalProvider.selectedLanguage == "en" ?
+    searchProvider.listingProperties.SquareMeter.nameEn : searchProvider.listingProperties.SquareMeter.nameAr}}</p>
+  <p class="filter-list__value" *ngIf="searchProvider.modalData.SquareMeter.isDataValid">
+    <span class="selected-values">{{searchProvider.modalData.SquareMeter.lower | number }} -
+      {{searchProvider.modalData.SquareMeter.upper | number }}</span>
+  </p>
+  <div class="list-field__icon filter-list__icon">
+    <svg width="10" height="17" viewBox="0 0 10 17" fill="none">
+      <path opacity="0.2" d="M0 0L7.5 7.5L15 0" transform="translate(0.75 16.25) rotate(-90)" stroke="#0F2355"
+        stroke-width="2" />
+    </svg>
+  </div>
+</div>
+<!-- End item -->
+
+</div>
+</ion-content>
+<ion-footer>
+  <footer class="filter-modal__footer">
+    <button (click)="openPage()" type="button" class="modal__btn btn-confirm filter-modal__btn">{{'Apply'|translate}}</button>
+  </footer>
+</ion-footer>
+</div>
+</div>

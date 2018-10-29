@@ -1,0 +1,8 @@
+.btn{
+    background: $white-color;
+    border: 1px solid rgba($white-color, .2);
+    border-radius: 60px;
+    font-size: 16px;
+    @include font-weight('bold');
+    text-transform: uppercase;
+}

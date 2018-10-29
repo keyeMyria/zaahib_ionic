@@ -1,0 +1,40 @@
+<ion-content padding>
+    <ion-buttons end>
+        <button ion-button round clear>
+            <ion-icon (click)="dismiss()" name="close"></ion-icon>
+        </button>
+    </ion-buttons>
+    <div padding class="lbcenter">
+        <ion-label color="primary" class="lbcenter">
+            <h4>{{'Connectwith'| translate}}</h4>
+        </ion-label>
+        <button ion-button round icon-only clear>
+            <ion-icon name="logo-facebook"></ion-icon>
+        </button>
+        <button ion-button round icon-only clear>
+            <ion-icon color="dark" name="logo-twitter"></ion-icon>
+        </button>
+        <button ion-button round icon-only clear>
+            <ion-icon color="danger" name="logo-googleplus"></ion-icon>
+        </button>
+        <button ion-button round icon-only clear>
+            <ion-icon color="dark" name="logo-windows"></ion-icon>
+        </button>
+        <button ion-button round icon-only clear>
+            <ion-icon name="logo-linkedin"></ion-icon>
+        </button>
+        <div padding class="lbcenter">
+            <ion-label color="primary" class="lbcenter">
+                <h6>{{'Do_not_have_an_account'| translate}}</h6>
+            </ion-label>
+            <button ion-button outline round (click)="showRegisterMobileModal()">{{'Register using Mobile Number'|
+                translate}}</button>
+            <button ion-button outline round (click)="showRegisterEmailModal()">{{'Register using Email'| translate}}</button>
+            <div>
+                <ion-label color="primary" class="lbcenter">{{'Have an account?'| translate}}</ion-label>
+                <button ion-button round (click)='login()'>{{'Login'| translate}}</button>
+            </div>
+        </div>
+    </div>
+
+</ion-content>

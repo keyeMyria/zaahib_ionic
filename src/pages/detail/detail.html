@@ -1,0 +1,470 @@
+<ion-header class="template-header">
+
+  <page-header></page-header>
+
+</ion-header>
+<ion-content>
+  <div class="detail-page" *ngIf="details">
+    <div class="list-wrapper list-wrapper_styled">
+      <!-- Begin item -->
+      <div class="list-item">
+        <div class="list-item__header">
+          <ion-slides #sliderOne pager loop>
+            <!-- Begin slide -->
+            <ion-slide *ngFor="let slide of details.listing.pictureURLs">
+              <img class="list-item__img" src="{{ slide }}">
+            </ion-slide>
+            <!-- End slide -->
+          </ion-slides>
+          <div class="list-item__options">
+            <button type="button" class="list-item__options-btn">
+              <svg width="27" height="27" viewBox="0 0 27 27" fill="none">
+                <circle cx="13.5" cy="13.5" r="13" stroke="white" />
+                <path d="M3 11V0M3 0L0 3M3 0L6 3" transform="translate(8 20) rotate(-90)" stroke="white" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M3 10.5V0M3 0L0 3M3 0L6 3" transform="translate(18.5 7) rotate(90)" stroke="white"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <button type="button" class="list-item__options-btn">
+              <svg width="27" height="26" viewBox="0 0 27 26" fill="none">
+                <path d="M14.0245 1.46353C14.1741 1.00287 14.8259 1.00287 14.9755 1.46353L17.6432 9.67376C17.7101 9.87977 17.9021 10.0193 18.1187 10.0193L26.7515 10.0193C27.2358 10.0193 27.4372 10.6391 27.0454 10.9238L20.0613 15.998C19.8861 16.1253 19.8128 16.351 19.8797 16.557L22.5474 24.7672C22.697 25.2279 22.1698 25.6109 21.7779 25.3262L14.7939 20.252C14.6186 20.1247 14.3814 20.1247 14.2061 20.252L7.22206 25.3262C6.83021 25.6109 6.30297 25.2279 6.45264 24.7672L9.12031 16.557C9.18725 16.351 9.11392 16.1253 8.93867 15.998L1.95463 10.9238C1.56277 10.6391 1.76416 10.0193 2.24852 10.0193L10.8813 10.0193C11.0979 10.0193 11.2899 9.87977 11.3568 9.67376L14.0245 1.46353Z"
+                  transform="translate(-1)" stroke="white" />
+              </svg>
+            </button>
+          </div>
+          <button (click)="goBack()" type="button" class="detail-back-btn">
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+              <path d="M7 1L1 7L7 13" stroke="#0F2355" />
+            </svg>
+            Back
+          </button>
+        </div>
+        <div class="list-item__info list-item__info_styled" *ngIf="details">
+          <p class="list-item__label">{{'Listing ID' | translate }}: {{details.listing.sid}}</p>
+          <p class="list-item__label">
+            {{this.globalProvider.selectedLanguage=== 'en' ? details.listing.TypeEn :details.listing.TypeAr}} ·
+            {{this.globalProvider.selectedLanguage==='en'? details.listing.CategoryEn : details.listing.CategoryAr }}</p>
+
+          <p class="list-item__title">{{ details.listing.PropertyTitleEn}}</p>
+
+          <div class="list-item__desc">
+            <p class="list-item__desc-item" *ngIf="details.listing.Beds || details.listing.Rooms ">
+              <img class="icon" src="assets/icon/sm-bed.svg">
+              {{ details.listing.Beds }} <span *ngIf="details.listing.Beds && details.listing.Rooms">+</span> {{
+              details.listing.Rooms }}
+            </p>
+            <p class="list-item__desc-item" *ngIf="details.listing.Baths">
+              <img class="icon" src="assets/icon/sm-bath.svg">
+              {{ details.listing.Baths }}
+            </p>
+            <p class="list-item__desc-item" *ngIf="details.listing.SquareMeter">
+              <img class="icon" src="assets/icon/area-icon.svg">
+              {{ details.listing.SquareMeter }} м
+              <sup>2</sup>
+            </p>
+          </div>
+          <p class="list-item__price">{{[details.listing.CategoryEn=== "For Sale" ? details.listing.Price:
+            details.listing.Rent]| removeDecimal}}
+            <span>{{this.globalProvider.countryData.CURRENCY}}
+              {{details.listing.CategoryEn=== "For Sale" ? '' : details.listing.RentAmountPerText | translate}}</span>
+          </p>
+        </div>
+      </div>
+      <!-- End item -->
+    </div>
+    <!-- Begin rating -->
+    <div class="rating detail-page__rating" *ngIf="details">
+      <button type="button" class="rating__btn rating__btn-positive">
+        <img class="icon" src="assets/icon/like-icon.svg">
+        <span>{{details.votes | sliceVote:'likes' }}</span>
+      </button>
+      <button type="button" class="rating__btn rating__btn-negative">
+        <img class="icon" src="assets/icon/dislike-icon.svg">
+        <span>{{details.votes | sliceVote:'dislikes' }}</span>
+      </button>
+    </div>
+    <!-- End rating -->
+    <!-- Begin contacts -->
+    <div class="contacts detail-page__contacts" (click)="pushPage(0)">
+      <p class="contacts__title">{{'Contact Details' | translate}}</p>
+      <div class="contacts__grid">
+        <div class="contacts__img">
+          <img src="{{details.listing.agency.AgencyLogo}}" onError="this.src='assets/imgs/default-agency-logo.png'">
+        </div>
+        <p class="contacts__name">{{this.globalProvider.selectedLanguage==='en'? details.listing.agency.AgencyNameEn :
+          details.listing.agency.AgencyNameAr }}</p>
+        <p class="contacts__value">{{details.listing.agency.MobileNumber}}</p>
+        <p class="contacts__value">adim@abc.com</p>
+        <!-- 
+        <div class="contacts__icon">
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+          <br />
+        </div> -->
+        </div>
+      </div>
+    <!-- <hr/>
+ <div><ion-label class="center"></ion-label></div>
+    <hr /> -->
+    <div class="divbtnfor">
+      <ion-row>
+        <ion-col col-4>
+          <button round color="primary" ion-button text-capitalize class="sellerPage">Seller Page</button>
+        </ion-col>
+        <ion-col col-4>
+          <button round no-padding color="primary" ion-button text-capitalize class="center sellerPage">
+            <ion-icon item-start name="ios-chatbubbles-outline"></ion-icon>Chat
+          </button>
+        </ion-col>
+        <ion-col col-4>
+          <button round ion-button text-capitalize class="center sendmail">
+            <ion-icon item-start name="md-mail"></ion-icon>Send
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+    <hr />
+
+
+
+    <!-- End contacts -->
+    <!-- Begin ads -->
+    <!-- <div class="advertasing"></div> -->
+    <!-- End ads -->
+    <!-- Begin map -->
+    <div class="detail-page__map">
+      <div id="leafletmap" class="detail-map">
+
+        <!-- <p class="address detail-map__address">
+          <img class="icon" src="assets/icon/location-icon.svg">
+          <span>
+            {{this.globalProvider.selectedLanguage==='en'? details.listing.StreetNameEn : details.listing.StreetNameAr
+            }},
+            {{details.listing.ZipCode}},
+            {{this.globalProvider.selectedLanguage==='en'? details.listing.MapAddressEn :
+            details.listing.MapAddressAr}}
+          </span>
+        </p> -->
+        <div id="detail-map" class="detail-map__grid"></div>
+        <!-- pushPage(1) -->
+        <!-- (click)="loadMap()" -->
+        <div class="map-buttons">
+          <button type="button" id="btnDirection" (click)="getDirections()" class="detail-map__direction">{{'Get Directions'| translate}} </button>
+          <button type="button" id="btnSatellite" (click)="switchToSatelliteMode()" class="detail-map__btn">{{'Satellite'| translate}} </button>
+          <button type="button" id="btnMap" (click)="switchToTerrainMode()" class="detail-map__btn active">{{'Map'| translate}} </button>
+      </div>
+      </div>
+    </div>
+    <!-- End map -->
+    <!-- Begin near by points of interest -->
+    <div class="detail-page__desc" *ngIf="details.poiNear.length > 1">
+      <div class="detail-page__section">
+        <p class="detail-page__section-name">{{'Near by Points of Interest' | translate}}</p>
+        <div padding-top=10px>
+          <ion-slides centeredSlides="false" pager="true" slidesPerView="1.5" spaceBetween="1px" (ionSlideDidChange)="slideChanged()">
+            <ion-slide  *ngFor="let POI of details.poiNear">
+              <ion-card>
+                <ion-list text-left class="pd">
+                  <ion-item class="pd" color="light">
+                    <i item-start><img src="assets/imgs/mapicons/poi{{POI.Category_SID}}.png"></i>
+                    <h2 class="cleO">{{POI.Category_name | translate}}</h2>
+                  </ion-item>
+                  <ion-item class="pd">
+                    <h5 class="pd"><span class="cleO"><i item-start class="fa fa-th-list"></i></span> <span class="cle">Abaha</span></h5>
+                    <h5 class="pd"><span class="cleO"><i item-start class="fa fa-road"></i></span> <span class="cle">10km</span></h5>
+                    <h5 class="pd"><span class="cleO"><i item-start class="fa fa-phone"></i></span> <span class="cle">0123456789</span></h5>
+                    <h5 class="pd"><span class="cleO"><i item-start class="fa fa-at"></i></span> <span class="cle">admin@abc.com</span></h5>
+                    <h5 class="pd"><span class="cleO"></span> <span class="cle"></span></h5>
+                  </ion-item>
+                </ion-list>
+              </ion-card>
+            </ion-slide>l
+            <ion-slide>
+              <ion-card>
+                <ion-list text-left class="pd">
+                  <ion-item class="pd" color="light">
+                    <i item-start class="fa fa-medkit"></i>
+                    <h2 class="cleO">Schools</h2>
+                  </ion-item>
+                  <ion-item class="pd">
+                    <h5 class="pd"><span class="cleO"><i item-start class="fa fa-th-list"></i></span> <span class="cle">Abaha</span></h5>
+                    <h5 class="pd"><span class="cleO"><i item-start class="fa fa-road"></i></span> <span class="cle">10km</span></h5>
+                    <h5 class="pd"><span class="cleO"><i item-start class="fa fa-phone"></i></span> <span class="cle">0123456789</span></h5>
+                    <h5 class="pd"><span class="cleO"><i item-start class="fa fa-at"></i></span> <span class="cle">admin@abc.com</span></h5>
+                    <h5 class="pd"><span class="cleO"></span> <span class="cle"></span></h5>
+                  </ion-item>
+                </ion-list>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+                <ion-list text-left class="pd">
+                  <ion-item class="pd" color="light">
+                    <i item-start class="fa fa-medkit"></i>
+                    <h2 class="cleO">Schools</h2>
+                  </ion-item>
+                  <ion-item class="pd">
+                    <h5 class="pd"><span class="cleO"><i item-start class="fa fa-th-list"></i></span> <span class="cle">Abaha</span></h5>
+                    <h5 class="pd"><span class="cleO"><i item-start class="fa fa-road"></i></span> <span class="cle">10km</span></h5>
+                    <h5 class="pd"><span class="cleO"><i item-start class="fa fa-phone"></i></span> <span class="cle">0123456789</span></h5>
+                    <h5 class="pd"><span class="cleO"><i item-start class="fa fa-at"></i></span> <span class="cle">admin@abc.com</span></h5>
+                    <h5 class="pd"><span class="cleO"></span> <span class="cle"></span></h5>
+                  </ion-item>
+                </ion-list>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </div>
+      </div>
+    </div>
+
+    <!-- End near by points of interest -->
+    <!-- Begin desc -->
+    <div class="detail-page__desc">
+      <div class="detail-page__section">
+        <p class="detail-page__section-name">{{'Listing Details' | translate}}</p>
+        <div class="detail-page__section-grid detail-page__section-features">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6 class="listingdetail-col" *ngIf="details.listing.GarageSize">
+                <span class="listingdetail-text">{{details.listing.GarageSize}}</span> <img src="assets/icon/garage.svg">
+              </ion-col>
+              <ion-col col-6 class="listingdetail-col" *ngIf="details.listing.SquareMeter">
+                <span>{{ details.listing.SquareMeter }} </span> м
+                <sup>2</sup>
+                <img src="assets/icon/area-icon.svg">
+              </ion-col>
+              <ion-col col-6 class="listingdetail-col" *ngIf="details.listing.Baths">
+                <span> {{ details.listing.Baths }}</span>
+                <img src="assets/icon/sm-bath.svg">
+              </ion-col>
+              <ion-col col-6 class="listingdetail-col" *ngIf="details.listing.Beds || details.listing.Rooms">
+                <span> {{ details.listing.Beds }} </span><span *ngIf="details.listing.Beds && details.listing.Rooms">+</span>
+                <span>{{details.listing.Rooms }}</span>
+                <img src="assets/icon/sm-bed.svg">
+              </ion-col>
+              <ion-col col-6 class="listingdetail-col" *ngIf="details.listing.YearBuilt">
+                <span>{{ details.listing.YearBuilt }}</span>
+                <img src="assets/icon/year built.svg">
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+
+
+      <div class="detail-page__section">
+        <p class="detail-page__section-name">{{'Features' | translate}}</p>
+        <div class="detail-page__section-grid detail-page__section-features">
+          <ion-grid no-padding>
+            <ion-row>
+              <ion-col col-6 class="feature-col" *ngIf="details.listing.OfficeRooms">
+                <img src="assets/icon/check.svg">
+                <span class="feature-text">{{'Office Rooms' | translate}}: {{details.listing.OfficeRooms}}</span>
+              </ion-col>
+              <ion-col col-6 class="feature-col" *ngIf="details.listing.PropertyFinalizingText">
+                <img src="assets/icon/check.svg">
+                <span class="feature-text">{{details.listing.PropertyFinalizingText}}</span>
+              </ion-col>
+
+              <ion-col col-6 class="feature-col" *ngIf="details.listing.GarageSize">
+                <img src="assets/icon/garage.svg"><span class="feature-text">{{'Parking'| translate}}:
+                  {{details.listing.GarageSize}}</span>
+              </ion-col>
+              <ion-col col-6 class="feature-col" *ngIf="details.listing.LevelNo">
+                <img src="assets/icon/check.svg"><span class="feature-text">{{'Level No' | translate}}:
+                  {{details.listing.LevelNo}}</span>
+              </ion-col>
+              <ion-col col-6 class="feature-col" *ngIf="details.listing.Rooms"><img src="assets/icon/sm-bed.svg"><span
+                  class="feature-text">{{'Other Rooms' | translate}}: {{details.listing.Rooms}}</span></ion-col>
+              <ion-col col-6 class="feature-col" *ngIf="details.listing.Beds"><img src="assets/icon/sm-bed.svg"><span
+                  class="feature-text">{{'Beds' | translate}}: {{details.listing.Beds}}</span></ion-col>
+              <ion-col col-6 class="feature-col" *ngFor="let feature of details.listing.Features" style="display:inherit;">
+                <img src="assets/icon/{{feature}}.svg"><span class="feature-text">{{feature | translate }}</span>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+    </div>
+    <!-- End desc -->
+    <!-- Begin comments -->
+    <div class="comments">
+      <header class="comments__header">
+        <p class="comments__title">{{'Comments' | translate}} </p>
+        <button (click)="comment = !comment" type="button" class="comments__btn">{{'Add Comment'|translate }}</button>
+      </header>
+      <br />
+      <div *ngIf="comment">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="../../assets/imgs/default-agency-logo.png">
+          </ion-avatar>
+          <h2>Anonymous</h2>
+        </ion-item>
+        <ion-item>
+          <ion-textarea style="border:1px solid rgb(236, 225, 225)" placeholder="Comments:"></ion-textarea>
+        </ion-item>
+        <br />
+        <ion-buttons end>
+          <button ion-button (click)="comment = !comment" round icon-left outline color="secondary">
+            <ion-icon name="md-checkmark"></ion-icon>
+            {{'Send Comment'|translate }}
+          </button>
+        </ion-buttons>
+      </div>
+      <div class="comments__grid" *ngFor="let comment of details.comments.comments" >
+        <!-- Begin item -->
+        <div class="comments__item">
+          <header class="comments__item-header">
+            <div class="comments__img">
+              <img src="{{comment.user.AgencyLogo}}">
+            </div>
+            <p class="comments__name">{{comment.user.FirstName}} {{comment.user.LastName}}</p>
+          </header>
+          <div class="comments__item-grid">
+            <p>{{comment.comment}}</p>
+          </div>
+<br/>
+          <div>
+
+              <div class="rating detail-page__rating" *ngIf="details">
+                  <button type="button" class="rating__btn rating__btn-positive">
+                    <img class="icon" src="assets/icon/like-icon.svg">
+                    <span>{{details.votes | sliceVote:'likes' }}</span>
+                  </button>
+                  <button type="button" class="rating__btn rating__btn-negative">
+                    <img class="icon" src="assets/icon/dislike-icon.svg">
+                    <span>{{details.votes | sliceVote:'dislikes' }}</span>
+                  </button>
+        </div>
+
+            <ion-row>
+              <ion-col col-3>
+                <button no-padding padding-left= 6px; ion-button icon-left clear text-capitalize (click)="comment1 = !comment1">
+                  <ion-icon name="ios-chatbubbles-outline"></ion-icon>
+                  Reply
+                </button>
+              </ion-col>
+
+              <ion-col col-9>
+                <button style="padding-left: 0px;" ion-button icon-left clear text-capitalize>
+                  <ion-icon name="ios-warning-outline"></ion-icon>
+                  Report Inappropriate Content
+                </button>
+              </ion-col>
+            </ion-row>
+
+
+            <div *ngIf="comment1">
+                <ion-item>
+                  <ion-avatar item-start>
+                    <img src="../../assets/imgs/default-agency-logo.png">
+                  </ion-avatar>
+                  <h2>Anonymous</h2>
+                </ion-item>
+                <ion-item>
+                  <ion-textarea style="border:1px solid rgb(236, 225, 225)" placeholder="Comments:"></ion-textarea>
+                </ion-item>
+                <br />
+                <ion-buttons end>
+                  <button ion-button (click)="comment1 = !comment1" round icon-left outline color="secondary">
+                    <ion-icon name="md-checkmark"></ion-icon>
+                    {{'Send Comment'|translate }}
+                  </button>
+                </ion-buttons>
+              </div>
+
+              
+
+          </div>
+
+
+        </div>
+        <!-- End item -->
+      </div>
+      <!-- <footer class="comments__footer" *ngIf="details.comments.comments.length > 1">
+        <button type="button" class="comments__btn comments__btn_full">{{details.comments.comments.length}} comments</button>
+      </footer> -->
+    </div>
+    <!-- End comments -->
+    <!-- Begin ads -->
+    <!-- <div class="advertasing"></div> -->
+    <!-- End ads -->
+    <!-- Begin similar -->
+    <div class="similar">
+      <p class="similar__title">Similar properties</p>
+      <page-similar-properties></page-similar-properties>
+    </div>
+
+    <!-- Begin ads -->
+    <!-- <div class="advertasing"></div> -->
+    <!-- End ads -->
+    <!-- Begin qr code -->
+    <div class="qr">
+      <p class="qr__title">qr code</p>
+      <div class="qr__grid">
+        <div class="qr__wrapper">
+          <img src="{{globalProvider.countryData.SERVER_ADDRESS}}/listing_qrcode/{{globalProvider.selectedLanguage}}/{{QRcodeUrl}}/">
+        </div>
+        <button type="button" class="qr__btn">
+          <svg width="20" height="19" viewBox="0 0 20 19" fill="none">
+            <rect width="18" height="16" fill="black" fill-opacity="0" transform="translate(1 2)" />
+            <path d="M1 18L10 2L19 18H1Z" stroke="white" />
+            <path d="M10 8.28564V13.9999M10 15.1428V16.2856" stroke="white" />
+          </svg>
+          Report
+        </button>
+      </div>
+    </div>
+    <!-- End qr code -->
+  </div>
+
+
+</ion-content>
+
+
+
+<ion-footer>
+
+  <div *ngIf="fav">
+    <div class="favdiv">
+      <ion-row padding-top=5>
+        <button ion-fab class="logo-facebook">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </button>
+      </ion-row>
+      <ion-row padding-top=5>
+        <button ion-fab class="logo-twitter">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </button>
+      </ion-row>
+      <ion-row padding-top=5>
+        <button ion-fab class="logo-instagram">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </button>
+      </ion-row>
+      <ion-row padding-top=5>
+        <button ion-fab class="logo-googleplus">
+          <ion-icon name="logo-googleplus"></ion-icon>
+        </button>
+      </ion-row>
+    </div>
+  </div>
+
+  <button type="button" class=" btnShre contact-btn">
+    <p class="contact-btn__name">
+      <svg width="21" height="20" viewBox="0 0 21 20" fill="none">
+        <path d="M8.70217 15.1436L8.11137 16.5223L8.70216 15.1436C8.14209 14.9036 7.53911 14.7798 6.92977 14.7798H3C2.17157 14.7798 1.5 14.1082 1.5 13.2798V3C1.5 2.17157 2.17157 1.5 3 1.5H18C18.8284 1.5 19.5 2.17157 19.5 3V13.8934C19.5 14.383 19.1032 14.7798 18.6136 14.7798H17.7056C16.0717 14.7798 14.745 16.0956 14.7274 17.7254L8.70217 15.1436Z"
+          stroke="white" stroke-width="3" />
+      </svg>
+      Contact the owner</p>
+    <div *ngIf="!fav" class="contact-btn__icon" (click)="fav = !fav">
+      <img src="assets/icon/share-icon.svg">
+    </div>
+    <div *ngIf="fav" (click)="fav = !fav" class="closebtn contact-btn__icon">
+      <ion-icon name="close"></ion-icon>
+      <!-- <h2 style="color: blue;"><b>X</b></h2> -->
+    </div>
+  </button>
+</ion-footer>

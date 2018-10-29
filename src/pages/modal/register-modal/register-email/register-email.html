@@ -1,0 +1,50 @@
+<ion-content padding>
+
+  <ion-buttons end>
+    <button ion-button round clear (click)="dismiss()">
+      <ion-icon color="primary" name="close"></ion-icon>
+    </button>
+  </ion-buttons>
+  <form [formGroup]="registrationForm" (ngSubmit)="registerUser()">
+  <div padding>
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" class="center">
+            <h1><b>{{'Register'|translate}}</b></h1>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label floating color="primary">{{'Your Email'|translate}}</ion-label>
+          <ion-input type="text" formControlName="username" ></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating color="primary">{{'Password'|translate}}</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating color="primary">{{'Confirm Your Password'|translate}} </ion-label>
+          <ion-input type="password" formControlName="confirmPassword"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-grid padding>
+      <ion-row>
+        <ion-col col-5>
+            <ion-input color="primary" type="text" name="security_code" formControlName="securityCode" class="fontSize" placeholder="{{'Entercode'|translate}}"></ion-input>
+        </ion-col>
+          <ion-col col-4><img id="registrationCaptcha" *ngIf="captchaData!=undefined" [src]="captchaData.registrationCaptcha"  ></ion-col>
+        <ion-col col-3>
+            <button ion-button clear type="button" (click)="refreshCaptcha()">
+            <ion-icon name="refresh"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+  <div class="center">
+      <button ion-button color="primary" [disabled]="username.invalid || password.invalid || confirmPassword.invalid || securityCode.invalid"  round type="submit">{{'Submit'|translate}}</button>
+      <button ion-button color="danger" outline round (click)="dismiss()" type="button">{{'Cancel'|translate}}</button>
+  </div>
+  </form>
+</ion-content>

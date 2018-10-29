@@ -1,0 +1,103 @@
+<ion-header>
+  <div class="template-header">
+    <div class="template-header__grid">
+      <div class="template-header__icon">
+        <svg width="33" height="31" viewBox="0 0 33 31" fill="none">
+          <path d="M2.71621 12.6518L0.0075328 0.218599C-0.0306382 0.0371521 0.0802055 -0.0473274 0.250507 0.0268676L14.8737 6.08221C15.041 6.1542 15.0469 6.2879 14.884 6.37238L2.71988 12.6518H2.71621Z"
+            transform="translate(1.85986)" fill="white" />
+          <path d="M15.779 17.2306L19.091 0.297958C19.1402 0.0364388 18.9912 -0.0730172 18.7607 0.051131L0.175808 9.84782C-0.0598244 9.96756 -0.0583523 10.1659 0.178749 10.2893L15.7848 17.2306H15.779Z"
+            transform="translate(11.2383 5.2876)" fill="white" />
+          <path d="M32.8601 14.8701L0.28995 0.0325874C0.0910197 -0.0562998 -0.0337666 0.0428719 0.00807476 0.254438L2.44368 12.8132C3.01258 15.0332 3.01258 15.0332 5.92972 15.0332H8.36239V9.26216L12.5737 11.1831V15.0332H32.8242C33.0444 15.0332 33.0591 14.959 32.8609 14.8701H32.8601Z"
+            transform="translate(0 15.9668)" fill="white" />
+        </svg>
+      </div>
+      <div class="search template-header__search">
+        <form class="form search__form">
+          <input class="search__input" type="text" name="s" [(ngModel)]="searchInput" placeholder="Search">
+          <i class="icon icon-search">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M10.1689 10.4722C11.4172 9.37357 12.2027 7.777 12.2027 6C12.2027 2.68629 9.47103 0 6.10135 0C2.73167 0 0 2.68629 0 6C0 9.31371 2.73167 12 6.10135 12C7.66402 12 9.08948 11.4223 10.1689 10.4722ZM10.1689 10.4722L15.7901 16"
+                transform="translate(1.20264 1)" stroke="white" />
+            </svg>
+          </i>
+        </form>
+        <!-- Begin suggestions -->
+        <div style="display: none;" class="search-suggestions">
+          <div class="search-suggestions__overlay"></div>
+          <div class="search-suggestions__grid">
+            <header class="search-suggestions__header">Property type</header>
+            <div class="search-suggestions__content">
+              <p class="search-suggestions__value">Villa</p>
+              <p class="search-suggestions__value">Holliday Villa</p>
+            </div>
+          </div>
+        </div>
+        <!-- End suggestions -->
+      </div>
+      <button type="button" class="menu-btn template-header__btn" menuToggle>
+        <svg width="26" height="18" viewBox="0 0 26 18" fill="none">
+          <rect width="26" height="2" rx="1" fill="white" />
+          <rect width="26" height="2" rx="1" transform="translate(0 8)" fill="white" />
+          <rect width="26" height="2" rx="1" transform="translate(0 16)" fill="white" />
+        </svg>
+        <p class="notifications menu-btn__notifications">15</p>
+      </button>
+    </div>
+  </div>
+  <div class="list-options">
+    <button (click)="showSortModal()" type="button" class="list-options__btn">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 0V12.5M3 0L0 3M3 0L6 3" transform="translate(1 1.5)" stroke="#0636B5" />
+        <path d="M3 0V12.5M3 0L0 3M3 0L6 3" transform="translate(14 13.5) rotate(180)" stroke="#0636B5" />
+      </svg>
+      Relevance
+    </button>
+    <button (click)="showFilterModal()" type="button" class="list-options__btn">
+      <div class="list-options__counter">3</div>
+      Filter
+    </button>
+  </div>
+</ion-header>
+
+
+<ion-content>
+  <div class="map-grid"></div>
+</ion-content>
+
+<ion-footer>
+  <div class="tabs">
+    <div class="tabs__item" (click)="openListPage()">
+      <div class="tabs__icon">
+        <svg width="25" height="14" viewBox="0 0 25 14" fill="none">
+          <rect width="25" height="1" rx="1" fill="#0F1A34" fill-opacity="0.3" />
+          <rect width="25" height="1" rx="1" transform="translate(0 6)" fill="#0F1A34" fill-opacity="0.3" />
+          <rect width="25" height="1" rx="1" transform="translate(0 12)" fill="#0F1A34" fill-opacity="0.3" />
+        </svg>
+      </div>
+      <p class="tabs__name">List</p>
+    </div>
+    <div class="tabs__item tabs__item_actived">
+      <div class="tabs__icon">
+        <svg width="16" height="22" viewBox="0 0 16 22" fill="none">
+          <path d="M15.5 8C15.5 8.98252 15.046 10.322 14.3016 11.8302C13.5658 13.321 12.5798 14.9118 11.5862 16.3761C10.5939 17.8387 9.60059 19.1656 8.85486 20.1275C8.50729 20.5757 8.21391 20.9442 8 21.2095C7.78609 20.9442 7.49271 20.5757 7.14514 20.1275C6.39941 19.1656 5.4061 17.8387 4.41375 16.3761C3.42021 14.9118 2.43415 13.321 1.69836 11.8302C0.953992 10.322 0.5 8.98252 0.5 8C0.5 3.85786 3.85786 0.5 8 0.5C12.1421 0.5 15.5 3.85786 15.5 8Z"
+            stroke="#0F1A34" stroke-opacity="0.3" />
+          <circle cx="3" cy="3" r="2.5" transform="translate(5 5)" stroke="#0F1A34" stroke-opacity="0.3" />
+        </svg>
+      </div>
+      <p class="tabs__name">Map</p>
+    </div>
+    <div class="tabs__item" (click)="openDirectoryPage()">
+      <div class="tabs__icon">
+        <svg width="25" height="13" viewBox="0 0 25 13" fill="none">
+          <rect width="18" height="1" rx="0.5" transform="translate(7)" fill="#0F1A34" fill-opacity="0.3" />
+          <rect width="18" height="1" rx="0.5" transform="translate(7 6)" fill="#0F1A34" fill-opacity="0.3" />
+          <rect width="18" height="1" rx="0.5" transform="translate(7 12)" fill="#0F1A34" fill-opacity="0.3" />
+          <rect width="5" height="1" rx="0.5" fill="#0F1A34" fill-opacity="0.3" />
+          <rect width="5" height="1" rx="0.5" transform="translate(0 6)" fill="#0F1A34" fill-opacity="0.3" />
+          <rect width="5" height="1" rx="0.5" transform="translate(0 12)" fill="#0F1A34" fill-opacity="0.3" />
+        </svg>
+      </div>
+      <p class="tabs__name">Directory</p>
+    </div>
+  </div>
+</ion-footer>

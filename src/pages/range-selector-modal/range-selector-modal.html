@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <!-- <ion-buttons left>
+        <button ion-button clear (click)="close()">
+          Cancel
+        </button>
+      </ion-buttons> -->
+
+    <ion-title class="center">{{title}}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button clear round (click)="done()">{{'Ok'|translate}}</button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding dir="{{globalProvider.selectedLanguage == 'en' ? 'ltr' : 'ltr'}}">
+
+  <div padding>
+    <ion-grid>
+
+      <ion-row>
+        <ion-col col-6 class="center">
+              <ion-label color="primary" >{{'Maximum Value'|translate}}:</ion-label>
+              <p class="selected-values"  >{{knobValues.lower | number}}</p>
+        </ion-col>
+
+        <ion-col col-6 class="center">
+            <ion-label color="primary">{{'Maximum Value'|translate}}:</ion-label>
+            <p class="selected-values" >{{knobValues.upper | number}}</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-item no-lines>
+            <ion-label color="primary" *ngIf="globalProvider.selectedLanguage == 'en'">{{'Minimum Value'|translate}} -
+              {{'Maximum Value'|translate}}</ion-label>
+            <ion-label color="primary" *ngIf="globalProvider.selectedLanguage == 'ar'">{{'Maximum Value'|translate}} -
+              {{'Minimum Value'|translate}}</ion-label>
+            <ion-range dualKnobs="true" color="primary" [(ngModel)]="knobValues" min={{min}} max={{max}} step="3" snaps="false"></ion-range>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+
+
+</ion-content>

@@ -1,0 +1,45 @@
+.tabs{
+    @include flex(row, center, space-between);
+    background: $white-color;
+    box-shadow: 0 -4px 14px 0 rgba($black-color, .08);
+    padding: 10px 0;
+    &__name{
+        font-size: 14px;
+        color: rgba(15, 26, 52, .3);
+        letter-spacing: .012em;
+        margin: 0;
+        margin-top: 5px;
+    }
+    &__item{
+        @include flex(column, center, center);
+        width: 33.3333%;
+        &_actived{
+            & .tabs__name{
+                color: #18D579;
+                @include font-weight('bold');
+            }
+            & svg{
+                & rect{
+                    // height: 2px;
+                    fill: #18D579;
+                    fill-opacity: 1;
+                }
+                & circle{
+                    stroke-opacity: 1;
+                    stroke: #18D579;
+                    // stroke-width: 2px;
+                }
+                & path{
+                    stroke-opacity: 1;
+                    stroke: #18D579;
+                    // stroke-width: 2px;
+                }
+            }
+        }
+    }
+    &__icon{
+        width: 22px;
+        height: 22px;
+        @include flex(row, center, center);
+    }
+}

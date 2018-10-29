@@ -1,0 +1,36 @@
+.range {
+  &-md {
+    padding: 0;
+    & .range-bar {
+      background: rgba(#1144CA, .2);
+      height: 2px;
+      &-active {
+        background: #1144CA;
+      }
+    }
+    & .range-knob {
+      left: 7px;
+      top: 7px;
+      border-radius: 50%;
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      background: #fff;
+      -webkit-box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.13), 0 0 0 1px rgba(0, 0, 0, 0.02);
+      box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.13), 0 0 0 1px rgba(0, 0, 0, 0.02);
+      pointer-events: none;
+      transform: scale(1);
+      border: none !important;
+    }
+  }
+  &-ios {
+    padding: 0;
+    & .range-bar {
+      background: rgba(#1144CA, .2);
+      height: 2px;
+      &-active {
+        background: #1144CA;
+      }
+    }
+  }
+}

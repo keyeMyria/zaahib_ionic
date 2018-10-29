@@ -1,0 +1,27 @@
+.rating{
+    @include flex(row, center, center);
+    border-top: 1px solid rgba(#0F2355, .1);
+    border-bottom: 1px solid rgba(#0F2355, .1);
+    &__btn{
+        @include flex(row, center, center);
+        height: 50px;
+        width: 50%;
+        font-size: 14px;
+        @include font-weight('bold');
+        &:not(:last-child){
+            border-right: 1px solid rgba(#0F2355, .1);
+        }
+        &:last-child{
+            margin-right: -1px;
+        }
+        & svg{
+            margin-right: 8px;
+        }
+        &-negative{
+            color: #D92C6A;
+        }
+        &-positive{
+            color: #18D579;
+        }
+    }
+}

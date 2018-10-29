@@ -1,0 +1,41 @@
+.list-wrapper{
+    padding: 15px;
+    &_styled{
+        padding: 0;
+    }
+}
+
+.property-thumbnail{
+    width:100%;
+  
+}
+
+.propery-title{
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    width:100%;
+}
+
+.list-id{
+    font-size:12px;
+}
+
+.agency-name{
+    padding-top:3px; 
+}
+
+// [dir="rtl"] .agency-name{
+//    text-align:left;
+//   }
+  
+//   [dir="ltr"] .agency-name{
+//     text-align:right;
+//    }
+
+// ion-img.img-loaded img{
+//     width: 100%;
+// }

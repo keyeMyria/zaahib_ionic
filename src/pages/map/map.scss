@@ -1,0 +1,11 @@
+.map{
+    &__grid{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        //For test
+        background: $white-color;
+    }
+}

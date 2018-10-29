@@ -1,0 +1,27 @@
+<div class="similar__grid">
+    <ion-slides #sliderTwo class="similar__carousel" loop style="width:100%" *ngIf="propertiesList" >
+      <!-- Begin slide -->
+      <ion-slide *ngFor="let property of propertiesList" class="similar__slide">
+        <div class="similar__item">
+          <div class="similar__item-header">
+            <img class="similar-property-thumbnail" [src]="property.thumbnail_url" (error)="loadAlternateImage($event,property.TypeEn)">
+          </div>
+
+          <div class="list-item__info">
+              <p class="list-item__label">{{this.globalProvider.selectedLanguage=== 'en' ? property.TypeEn :
+                property.TypeAr}}· {{this.globalProvider.selectedLanguage=== 'en' ? property.CategoryEn
+                :property.CategoryAr}}</p>
+              <p class="list-item__desc">
+                <ion-icon class="location-icon icon icon-md ion-ios-pin"></ion-icon>
+                {{property.DistrictEn}} - {{property.CityEn}} - {{property.ProvinceEn}}
+              </p>
+              <p class="list-item__price">{{[property.CategoryEn=== "For Sale" ? property.Price: property.Rent]| removeDecimal}}
+                <span>{{this.globalProvider.countryData.CURRENCY}} {{propertyCategoryEn=== "For Sale" ? '' : property.RentAmountPerText}}</span>
+              </p>
+            </div>
+  
+        </div>
+      </ion-slide>
+      <!-- End slide -->
+    </ion-slides>
+  </div>

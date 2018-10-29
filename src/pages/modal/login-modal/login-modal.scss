@@ -1,0 +1,78 @@
+page-login-modal {
+
+    .no-scroll .scroll-content{
+        overflow: hidden;
+    }
+
+}
+
+.login-modal{
+    &__grid{
+        height: calc(100% - 70px);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        &_styled{
+            border-radius: 0;
+            height: 100%;
+        }
+    }
+}
+
+
+.textbox{
+    border: 1px solid #1144ca;
+    font-size: 14px;
+    margin:5px;
+    border-radius: 5px;
+}
+.lbRight{
+    text-align: right;
+}
+.lbLeft{
+    text-align: left;
+}
+.lbcenter{
+    text-align: center;    
+}
+.Rndbtn{
+    width: 20px;
+}
+
+
+ion-input {
+    &.txtlogin {
+      font-size: 14px; //sets text font size
+      ::placeholder {
+        font-size: 14px; //sets placeholder font size
+      }
+    }
+  }
+
+  .lblLogin{
+    font-size: 14px;
+}
+
+
+// .scroll-content{
+//     overflow-y: hidden;padding-bottom:0; 
+// }
+
+// .input-cover{
+//     position: relative;
+// }
+
+.success-toast > div{
+    background-color: #18D579 !important ;
+   
+}
+.fail-toast > div{
+    background-color: #fb4b4b !important;
+    
+}
+
+.center{
+    text-align: center;
+}
+
+
+

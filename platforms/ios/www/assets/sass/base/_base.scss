@@ -1,0 +1,95 @@
+    // -----------------------------------------------------------------------------
+    // This file contains very basic styles.
+    // -----------------------------------------------------------------------------
+    /**
+ * Set up a decent box model on the root element
+ */
+
+    html {
+        font-family: 'Open Sans';
+        @include font-weight('normal');
+    }
+    /**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Open Sans';
+        @include font-weight('normal');
+    }
+
+    button{
+        padding: 0;
+        border: none;
+        appearance: none;
+        background: none;
+    }
+
+    input{
+        @extend button;
+        font-size: 16px;
+        color: $white-color;
+    }
+
+    ::-webkit-input-placeholder {
+        font-size: 16px;
+        color: $white-color;
+    }
+
+     ::-moz-placeholder {
+        font-size: 16px;
+        color: $white-color;
+        opacity: 1;
+    }
+
+     :-moz-placeholder {
+        font-size: 16px;
+        color: $white-color;
+        opacity: 1;
+    }
+
+     :-ms-input-placeholder {
+        font-size: 16px;
+        color: $white-color;
+    }
+
+    .location-modal__input::-webkit-input-placeholder{
+        color: #0F2355;
+    }
+
+    .location-modal__input::-moz-input-placeholder{
+        color: #0F2355;
+    }
+
+    .location-modal__input:-moz-input-placeholder{
+        color: #0F2355;
+    }
+
+    .location-modal__input:-ms-input-placeholder{
+        color: #0F2355;
+    }
+
+     :focus::-webkit-input-placeholder {
+        color: transparent;
+    }
+
+     :focus::-moz-placeholder {
+        color: transparent;
+    }
+
+     :focus:-moz-placeholder {
+        color: transparent;
+    }
+
+     :focus::-ms-input-placeholder {
+        color: transparent;
+    }

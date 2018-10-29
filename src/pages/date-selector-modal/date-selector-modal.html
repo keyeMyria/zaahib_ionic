@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button clear (click)="close()">
+        Cancel
+      </button>
+    </ion-buttons>
+    <ion-title class="center">
+      <ion-icon name="calendar"></ion-icon> Posted On
+    </ion-title>
+
+
+    <ion-buttons end>
+      <button ion-button clear round (click)="done()">Done</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <button ion-button icon-right (click)="picker.open()" full>From
+    <ion-datetime #picker pickerFormat="DD MMMM YYYY" displayFormat="MM-DD-YYYY" [(ngModel)]="fromDate"></ion-datetime>
+    <ion-icon name="calendar"></ion-icon>
+  </button>
+
+
+
+  <button ion-button icon-right (click)="picker.open()" full>To
+    <ion-datetime #picker pickerFormat="DD MMMM YYYY" displayFormat="MM-DD-YYYY" [(ngModel)]="toDate"></ion-datetime>
+    <ion-icon name="calendar"></ion-icon>
+  </button>
+
+
+
+</ion-content>

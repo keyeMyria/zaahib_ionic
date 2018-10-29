@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Location & Address</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only text-capitalize clear (click)="done()">
+        Done
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button block color="primary" icon-left (click)="gotoUsingMapPage()">
+        <ion-icon name="md-globe"></ion-icon>{{"Using Map" | translate}}
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <br />
+
+  <location-selector></location-selector>
+
+  <hr />
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label color="primary">Street Name:</ion-label>
+        <ion-input [(ngModel)]="addPropertyProvider.location.StreetName"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <hr />
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label color="primary">Building No:</ion-label>
+        <ion-input [(ngModel)]="addPropertyProvider.location.BuildingNo"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <hr />
+  <ion-row>
+    <ion-col col-5>
+      <ion-item>
+        <ion-label color="primary" floating>Zip Code:</ion-label>
+        <ion-input type="text" [(ngModel)]="addPropertyProvider.location.ZipCode"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col col-7>
+      <ion-item>
+        <ion-label color="primary" floating>Additional No:</ion-label>
+        <ion-input type="text" [(ngModel)]="addPropertyProvider.location.AdditionalNo"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
